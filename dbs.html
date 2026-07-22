@@ -1,0 +1,2504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#8f0e1e" />
+  <title>Jiaobei Wishes | DBS Knowledge Lucky Draw</title>
+  <style>
+    :root {
+      --dbs-red: #e31837;
+      --deep-red: #8f0e1e;
+      --wine: #4d0712;
+      --gold: #d9a441;
+      --gold-light: #f5d98c;
+      --ivory: #fffaf0;
+      --ink: #251b19;
+      --muted: #7a6965;
+      --green: #1f7a55;
+      --shadow: 0 24px 70px rgba(62, 7, 18, 0.26);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, "Segoe UI", Arial, system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 15% 8%, rgba(245, 217, 140, .35), transparent 28%),
+        radial-gradient(circle at 85% 14%, rgba(227, 24, 55, .16), transparent 30%),
+        linear-gradient(145deg, #fffaf0 0%, #f7ecdc 52%, #f8e3e4 100%);
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      pointer-events: none;
+      border-radius: 999px;
+      filter: blur(2px);
+      opacity: .55;
+      z-index: 0;
+    }
+
+    body::before {
+      width: 340px;
+      height: 340px;
+      left: -170px;
+      bottom: -130px;
+      background: rgba(143, 14, 30, .12);
+    }
+
+    body::after {
+      width: 280px;
+      height: 280px;
+      right: -120px;
+      top: 36%;
+      background: rgba(217, 164, 65, .14);
+    }
+
+    button { font: inherit; }
+
+    .app-shell {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 560px);
+      min-height: 100svh;
+      margin: 0 auto;
+      padding: 24px 18px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .app-card {
+      position: relative;
+      width: 100%;
+      min-height: min(820px, calc(100svh - 48px));
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.88);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 252, 246, .87);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+
+    .app-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 8px;
+      background: linear-gradient(90deg, var(--deep-red), var(--dbs-red), var(--gold), var(--dbs-red), var(--deep-red));
+      z-index: 5;
+    }
+
+    .ornament {
+      position: absolute;
+      top: 26px;
+      width: 112px;
+      height: 112px;
+      opacity: .09;
+      background-image:
+        linear-gradient(45deg, transparent 47%, var(--deep-red) 48% 52%, transparent 53%),
+        linear-gradient(-45deg, transparent 47%, var(--deep-red) 48% 52%, transparent 53%);
+      background-size: 22px 22px;
+      mask-image: radial-gradient(circle, #000 44%, transparent 72%);
+      -webkit-mask-image: radial-gradient(circle, #000 44%, transparent 72%);
+    }
+
+    .ornament.left { left: -34px; }
+    .ornament.right { right: -34px; transform: rotate(22deg); }
+
+    .topbar {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 22px 0;
+      position: relative;
+      z-index: 4;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      color: var(--deep-red);
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #fff;
+      background: linear-gradient(145deg, var(--dbs-red), var(--deep-red));
+      box-shadow: 0 8px 18px rgba(143,14,30,.25);
+      font-family: Georgia, serif;
+      font-size: 20px;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 14px;
+      color: var(--deep-red);
+      background: rgba(143, 14, 30, .08);
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .icon-btn:hover { transform: translateY(-2px); background: rgba(143,14,30,.14); }
+
+    body.fullscreen-mode .app-shell {
+      width: 100%;
+      max-width: none;
+      min-height: 100svh;
+      padding: 0;
+      align-items: stretch;
+    }
+
+    body.fullscreen-mode .app-card {
+      min-height: 100svh;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    body.fullscreen-mode .screen {
+      width: min(100%, 720px);
+      min-height: calc(100svh - 72px);
+      margin: 0 auto;
+    }
+
+    .screen {
+      display: none;
+      min-height: calc(min(820px, calc(100svh - 48px)) - 72px);
+      padding: 26px 26px 30px;
+      animation: screenIn .5s cubic-bezier(.22,.8,.28,1) both;
+    }
+
+    .screen.active { display: flex; flex-direction: column; }
+
+    @keyframes screenIn {
+      from { opacity: 0; transform: translateY(12px) scale(.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: center;
+      padding: 7px 12px;
+      border: 1px solid rgba(143, 14, 30, .13);
+      border-radius: 999px;
+      color: var(--deep-red);
+      background: rgba(255,255,255,.62);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--dbs-red);
+      box-shadow: 0 0 0 5px rgba(227,24,55,.1);
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    .hero-title {
+      margin: 22px auto 12px;
+      text-align: center;
+      color: var(--wine);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 9vw, 48px);
+      line-height: 1.18;
+      letter-spacing: .055em;
+    }
+
+    .hero-title span {
+      display: block;
+      margin-top: 8px;
+      color: var(--dbs-red);
+      font-family: inherit;
+      font-size: .42em;
+      letter-spacing: .22em;
+    }
+
+    .hero-copy {
+      max-width: 400px;
+      margin: 0 auto;
+      color: var(--muted);
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .altar {
+      position: relative;
+      width: 100%;
+      height: 270px;
+      margin: 14px auto 4px;
+      display: grid;
+      place-items: center;
+      perspective: 900px;
+    }
+
+    .halo {
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background:
+        repeating-radial-gradient(circle, transparent 0 17px, rgba(217,164,65,.16) 18px 19px),
+        radial-gradient(circle, rgba(245,217,140,.43), rgba(245,217,140,.06) 62%, transparent 70%);
+      animation: haloBreath 4s ease-in-out infinite;
+    }
+
+    @keyframes haloBreath {
+      50% { transform: scale(1.05) rotate(3deg); opacity: .72; }
+    }
+
+    .jiaobei-preview {
+      position: relative;
+      width: 230px;
+      height: 160px;
+      transform: rotate(-4deg);
+    }
+
+    .mini-piece {
+      position: absolute;
+      width: 126px;
+      height: 72px;
+      border-radius: 68% 72% 14% 12% / 92% 90% 18% 18%;
+      background:
+        linear-gradient(118deg, rgba(255,255,255,.10), transparent 24%),
+        repeating-linear-gradient(9deg, rgba(255,229,206,.09) 0 1px, rgba(122,48,34,.04) 1px 4px, transparent 4px 10px),
+        linear-gradient(155deg, #c4473f 0%, #98302d 44%, #621d1a 100%);
+      box-shadow:
+        0 20px 30px rgba(78, 7, 18, .28),
+        inset 6px 6px 9px rgba(255,255,255,.08),
+        inset -11px -11px 15px rgba(57,16,11,.28);
+      transform-origin: center;
+    }
+
+    .mini-piece::before {
+      content: "";
+      position: absolute;
+      left: 17%;
+      top: 10%;
+      width: 56%;
+      height: 22%;
+      border-radius: 50%;
+      background: linear-gradient(90deg, rgba(255,255,255,.08), rgba(255,255,255,.01));
+      filter: blur(2px);
+      transform: rotate(-8deg);
+    }
+
+    .mini-piece::after {
+      content: "";
+      position: absolute;
+      inset: 7px 9px 8px;
+      border-radius: inherit;
+      border: 1.4px solid rgba(201,146,78,.45);
+      opacity: .68;
+    }
+
+    .mini-piece.one { left: 10px; top: 39px; transform: rotate(31deg); }
+    .mini-piece.two { right: 5px; bottom: 25px; transform: rotate(151deg) scaleX(-1); }
+
+    .primary-btn,
+    .secondary-btn {
+      width: 100%;
+      min-height: 56px;
+      border-radius: 18px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 900;
+      letter-spacing: .06em;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+
+    .primary-btn {
+      color: #fff;
+      background: linear-gradient(135deg, var(--dbs-red), var(--deep-red));
+      box-shadow: 0 14px 28px rgba(143,14,30,.27), inset 0 1px rgba(255,255,255,.22);
+    }
+
+    .primary-btn:hover { transform: translateY(-2px); box-shadow: 0 18px 34px rgba(143,14,30,.34); }
+    .primary-btn:active { transform: translateY(1px) scale(.995); }
+    .primary-btn:disabled { cursor: not-allowed; opacity: .48; box-shadow: none; }
+
+    .secondary-btn {
+      color: var(--deep-red);
+      background: rgba(143,14,30,.08);
+      border: 1px solid rgba(143,14,30,.1);
+    }
+
+    .tiny-note {
+      margin: 12px 0 0;
+      text-align: center;
+      color: #9a8680;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    /* Casting stage */
+    .casting-screen {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .casting-title {
+      margin: 22px 0 4px;
+      color: var(--wine);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      letter-spacing: .08em;
+    }
+
+    .casting-copy { color: var(--muted); font-size: 13px; }
+
+    .stage {
+      position: relative;
+      width: 100%;
+      height: 360px;
+      margin-top: 12px;
+      display: grid;
+      place-items: center;
+      perspective: 1100px;
+    }
+
+    .stage-floor {
+      position: absolute;
+      width: 330px;
+      height: 150px;
+      top: 164px;
+      border-radius: 50%;
+      background:
+        radial-gradient(ellipse, rgba(83,16,26,.25), transparent 66%),
+        repeating-radial-gradient(ellipse, rgba(217,164,65,.11) 0 2px, transparent 3px 16px);
+      transform: rotateX(68deg);
+      filter: blur(.15px);
+    }
+
+    .incense-smoke {
+      position: absolute;
+      left: 50%;
+      bottom: 240px;
+      width: 5px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(transparent, rgba(143,14,30,.18), transparent);
+      filter: blur(4px);
+      animation: smoke 2.8s ease-in-out infinite;
+    }
+
+    @keyframes smoke {
+      0% { transform: translateX(-50%) translateY(10px) scaleX(.7); opacity: 0; }
+      35% { opacity: .8; }
+      100% { transform: translateX(-20%) translateY(-35px) scaleX(2.5); opacity: 0; }
+    }
+
+    .pieces {
+      position: relative;
+      width: 350px;
+      height: 280px;
+      transform-style: preserve-3d;
+    }
+
+    .piece {
+      --rx: 0deg;
+      --ry: 0deg;
+      --rz: 0deg;
+      position: absolute;
+      top: 65px;
+      width: 150px;
+      height: 88px;
+      transform-style: preserve-3d;
+      transform: translate3d(0, 0, 0) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz));
+      transition: transform .9s cubic-bezier(.18,.82,.22,1.15), top .9s ease, left .9s ease;
+      filter: drop-shadow(0 18px 14px rgba(68, 8, 18, .26));
+    }
+
+    .piece.one { left: 20px; }
+    .piece.two { right: 20px; }
+
+    .piece svg { width: 100%; height: 100%; overflow: visible; }
+    .piece .shell { fill: url(#woodGradientA); stroke: rgba(91,7,18,.8); stroke-width: 2; }
+    .piece.two .shell { fill: url(#woodGradientB); }
+    .piece .flat-surface { fill: url(#flatGradient); opacity: 0; transition: opacity .35s ease; }
+    .piece .convex-surface { fill: url(#convexGradient); opacity: 1; transition: opacity .35s ease; }
+    .piece .rim { fill: none; stroke: rgba(255,224,165,.58); stroke-width: 2.1; }
+    .piece .shine { fill: rgba(255,255,255,.18); }
+
+    .piece.face-flat .flat-surface { opacity: 1; }
+    .piece.face-flat .convex-surface { opacity: 0; }
+    .piece.face-convex .flat-surface { opacity: 0; }
+    .piece.face-convex .convex-surface { opacity: 1; }
+
+    .pieces.throwing .piece.one { animation: throwOne 1.9s cubic-bezier(.17,.84,.28,1) both; }
+    .pieces.throwing .piece.two { animation: throwTwo 1.9s cubic-bezier(.17,.84,.28,1) both; }
+
+    @keyframes throwOne {
+      0% { transform: translate3d(32px, 90px, 0) rotateX(0) rotateY(0) rotateZ(18deg) scale(.82); }
+      26% { transform: translate3d(88px, -95px, 120px) rotateX(190deg) rotateY(260deg) rotateZ(96deg) scale(1.02); }
+      58% { transform: translate3d(10px, -15px, 70px) rotateX(430deg) rotateY(520deg) rotateZ(205deg); }
+      78% { transform: translate3d(18px, 82px, 8px) rotateX(660deg) rotateY(680deg) rotateZ(310deg) scale(.97); }
+      90% { transform: translate3d(8px, 54px, 2px) rotateX(680deg) rotateY(710deg) rotateZ(330deg) scale(1.02); }
+      100% { transform: translate3d(0, 64px, 0) rotateX(720deg) rotateY(720deg) rotateZ(340deg); }
+    }
+
+    @keyframes throwTwo {
+      0% { transform: translate3d(-32px, 92px, 0) rotateX(0) rotateY(0) rotateZ(-18deg) scale(.82); }
+      24% { transform: translate3d(-82px, -108px, 130px) rotateX(-210deg) rotateY(280deg) rotateZ(-110deg) scale(1.04); }
+      56% { transform: translate3d(18px, -20px, 76px) rotateX(-455deg) rotateY(510deg) rotateZ(-225deg); }
+      78% { transform: translate3d(-16px, 78px, 8px) rotateX(-650deg) rotateY(690deg) rotateZ(-315deg) scale(.96); }
+      90% { transform: translate3d(-8px, 55px, 2px) rotateX(-680deg) rotateY(710deg) rotateZ(-335deg) scale(1.03); }
+      100% { transform: translate3d(0, 64px, 0) rotateX(-720deg) rotateY(720deg) rotateZ(-340deg); }
+    }
+
+    .casting-progress {
+      width: min(300px, 82%);
+      height: 4px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(143,14,30,.08);
+    }
+
+    .casting-progress::after {
+      content: "";
+      display: block;
+      width: 40%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, transparent, var(--dbs-red), var(--gold), transparent);
+      animation: progressSweep 1.2s ease-in-out infinite;
+    }
+
+    @keyframes progressSweep { from { transform: translateX(-120%); } to { transform: translateX(350%); } }
+
+    /* Result */
+    .result-screen { align-items: center; text-align: center; }
+
+    .result-seal {
+      width: 84px;
+      height: 84px;
+      margin-top: 8px;
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255,255,255,.82);
+      border-radius: 27px;
+      color: #fff;
+      background: linear-gradient(145deg, var(--dbs-red), var(--deep-red));
+      box-shadow: 0 16px 30px rgba(143,14,30,.25), inset 0 0 0 7px rgba(255,255,255,.08);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: .04em;
+      transform: rotate(-4deg);
+      animation: sealPop .65s cubic-bezier(.2,.9,.2,1.25) both;
+    }
+
+    @keyframes sealPop { from { opacity: 0; transform: scale(.4) rotate(-18deg); } }
+
+    .result-name {
+      margin: 18px 0 8px;
+      color: var(--wine);
+      font-family: "Noto Serif TC", Georgia, "Times New Roman", serif;
+      font-size: clamp(25px, 5.8vw, 34px);
+      line-height: 1.25;
+      letter-spacing: .015em;
+      text-wrap: balance;
+    }
+
+    .result-tag {
+      margin-bottom: 16px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      color: var(--deep-red);
+      background: rgba(227,24,55,.09);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .result-visual {
+      width: 100%;
+      height: 190px;
+      margin: 2px 0 10px;
+      display: grid;
+      place-items: center;
+    }
+
+    .result-mini-pieces {
+      position: relative;
+      width: 280px;
+      height: 150px;
+    }
+
+    .result-mini {
+      position: absolute;
+      top: 36px;
+      width: 138px;
+      height: 78px;
+      overflow: hidden;
+      border-radius: 68% 72% 14% 12% / 92% 90% 18% 18%;
+      background:
+        linear-gradient(118deg, rgba(255,255,255,.10), transparent 24%),
+        repeating-linear-gradient(9deg, rgba(255,229,206,.09) 0 1px, rgba(118,40,28,.04) 1px 4px, transparent 4px 10px),
+        linear-gradient(155deg, #c2443d 0%, #962e2b 44%, #601b18 100%);
+      box-shadow:
+        0 19px 27px rgba(78,7,18,.27),
+        inset 6px 6px 9px rgba(255,255,255,.08),
+        inset -10px -10px 14px rgba(56,15,10,.26);
+      transition: all .4s ease;
+    }
+
+    .result-mini::after {
+      content: "";
+      position: absolute;
+      inset: 8px 10px 9px;
+      z-index: 2;
+      border-radius: inherit;
+      border: 1.5px solid rgba(194,141,76,.45);
+    }
+
+    .result-mini.flat::before {
+      content: "";
+      position: absolute;
+      inset: 5px 7px 7px;
+      z-index: 1;
+      border-radius: inherit;
+      background:
+        linear-gradient(110deg, rgba(255,255,255,.10), transparent 28%),
+        repeating-linear-gradient(5deg, rgba(255,223,201,.18) 0 1px, rgba(118,40,28,.05) 1px 4px, transparent 4px 9px),
+        linear-gradient(145deg, #ca5a4e 0%, #9b3831 50%, #6c221d 100%);
+      box-shadow:
+        inset 2px 2px 5px rgba(255,255,255,.12),
+        inset -5px -5px 9px rgba(74,18,14,.20);
+    }
+
+    .result-mini.flat::after { border-color: rgba(187,133,69,.42); }
+    .result-mini.a { left: 0; transform: rotate(27deg); }
+    .result-mini.b { right: 0; transform: rotate(153deg) scaleX(-1); }
+    .result-mini.upright { width: 44px; height: 134px; top: 7px; border-radius: 55% 45% 18% 16% / 13% 13% 35% 35%; }
+    .result-mini.upright.a { left: 76px; transform: rotate(-4deg); }
+    .result-mini.upright.b { right: 76px; transform: rotate(4deg); }
+
+    .result-desc {
+      max-width: 420px;
+      min-height: 76px;
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .result-actions { width: 100%; margin-top: auto; }
+
+    /* Quiz — compact single-screen layout */
+    .quiz-screen {
+      height: calc(min(820px, calc(100svh - 48px)) - 72px);
+      min-height: 0;
+      max-height: calc(100svh - 72px);
+      overflow: hidden;
+      justify-content: flex-start;
+    }
+
+    .quiz-screen.active {
+      display: grid;
+      grid-template-rows: auto auto auto auto auto;
+      align-content: start;
+      gap: 11px;
+    }
+
+    .quiz-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .quiz-kicker {
+      color: var(--dbs-red);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .1em;
+    }
+
+    .quiz-badge {
+      flex: 0 0 auto;
+      max-width: 46%;
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: var(--deep-red);
+      background: rgba(143,14,30,.08);
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .question-card {
+      padding: 15px 17px;
+      border: 1px solid rgba(143,14,30,.09);
+      border-radius: 18px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,248,236,.88));
+      box-shadow: 0 10px 24px rgba(74,37,28,.07);
+    }
+
+    .question-number {
+      margin-bottom: 6px;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .1em;
+    }
+
+    .question-text {
+      margin: 0;
+      color: var(--wine);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(18px, 3.8vw, 24px);
+      line-height: 1.28;
+      text-wrap: balance;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0;
+    }
+
+    .option {
+      position: relative;
+      width: 100%;
+      min-height: 50px;
+      padding: 9px 10px 9px 43px;
+      border: 1px solid rgba(143,14,30,.11);
+      border-radius: 14px;
+      color: var(--ink);
+      background: rgba(255,255,255,.72);
+      text-align: left;
+      font-size: 17px;
+      line-height: 1.3;
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+
+    .option:hover { transform: translateY(-1px); border-color: rgba(227,24,55,.35); box-shadow: 0 8px 20px rgba(91,12,25,.08); }
+
+    .option-letter {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      width: 25px;
+      height: 25px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      color: var(--deep-red);
+      background: rgba(143,14,30,.08);
+      font-size: 18px;
+      font-weight: 900;
+      transform: translateY(-50%);
+    }
+
+    .option.selected {
+      border-color: var(--dbs-red);
+      background: rgba(227,24,55,.07);
+      box-shadow: 0 0 0 3px rgba(227,24,55,.08);
+    }
+
+    .option.selected .option-letter { color: #fff; background: var(--dbs-red); }
+    .option.correct { border-color: var(--green); background: rgba(31,122,85,.09); }
+    .option.correct .option-letter { color: #fff; background: var(--green); }
+    .option.wrong { border-color: var(--dbs-red); background: rgba(227,24,55,.08); }
+    .option:disabled { cursor: default; transform: none; }
+
+    .feedback {
+      display: none;
+      margin: 0;
+      padding: 10px 12px;
+      border-radius: 13px;
+      line-height: 1.38;
+      font-size: 16px;
+    }
+
+    .feedback.show { display: block; animation: screenIn .35s ease both; }
+    .feedback.correct { color: #135d42; background: rgba(31,122,85,.09); border: 1px solid rgba(31,122,85,.16); }
+    .feedback.wrong { color: #8f0e1e; background: rgba(227,24,55,.08); border: 1px solid rgba(227,24,55,.14); }
+    .feedback strong { display: block; margin-bottom: 2px; font-size: 18px; }
+
+    .quiz-actions { margin: 0; }
+    .quiz-actions .primary-btn { min-height: 50px; }
+
+    /* Reward modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      place-items: center;
+      padding: 22px;
+      background: rgba(40, 5, 11, .56);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .modal-backdrop.show { display: grid; animation: fadeIn .35s ease both; }
+    @keyframes fadeIn { from { opacity: 0; } }
+
+    .reward-modal {
+      position: relative;
+      width: min(100%, 430px);
+      overflow: hidden;
+      padding: 32px 26px 26px;
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 28px;
+      text-align: center;
+      background: linear-gradient(160deg, #fffdf7, #f8ead7 58%, #f7dfe3);
+      box-shadow: 0 28px 80px rgba(31,2,8,.38);
+      animation: modalPop .6s cubic-bezier(.2,.9,.2,1.15) both;
+    }
+
+    @keyframes modalPop { from { opacity: 0; transform: translateY(28px) scale(.88); } }
+
+    .reward-icon {
+      width: 86px;
+      height: 86px;
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(145deg, var(--gold), #b8781c);
+      box-shadow: 0 14px 30px rgba(180,116,24,.3), inset 0 0 0 8px rgba(255,255,255,.13);
+      font-size: 42px;
+      animation: rewardFloat 2s ease-in-out infinite;
+    }
+
+    @keyframes rewardFloat { 50% { transform: translateY(-6px) rotate(4deg); } }
+
+    .reward-modal h2 {
+      margin-bottom: 8px;
+      color: var(--wine);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 32px;
+    }
+
+    .reward-ticket {
+      position: relative;
+      margin: 20px 0;
+      padding: 18px;
+      border: 1px dashed rgba(143,14,30,.33);
+      border-radius: 18px;
+      color: var(--deep-red);
+      background: rgba(255,255,255,.62);
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: .06em;
+    }
+
+    .reward-ticket::before,
+    .reward-ticket::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #f7e7d7;
+      transform: translateY(-50%);
+    }
+
+    .reward-ticket::before { left: -11px; }
+    .reward-ticket::after { right: -11px; }
+
+    .reward-modal p { color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+    .confetti-layer { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .confetti {
+      position: absolute;
+      top: -18px;
+      width: 9px;
+      height: 16px;
+      border-radius: 3px;
+      background: var(--dbs-red);
+      animation: confettiFall 2.8s linear infinite;
+    }
+
+    @keyframes confettiFall {
+      to { transform: translate3d(var(--drift, 30px), 530px, 0) rotate(720deg); opacity: .1; }
+    }
+
+    /* Debug */
+    .debug-panel {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 10px;
+      bottom: 10px;
+      padding: 8px;
+      border-radius: 12px;
+      background: rgba(30,20,20,.88);
+      color: white;
+      font-size: 11px;
+    }
+
+    .debug-panel.show { display: flex; gap: 5px; flex-wrap: wrap; max-width: 320px; }
+    .debug-panel button { border: 0; border-radius: 7px; padding: 5px 7px; cursor: pointer; }
+
+    @media (max-width: 520px) {
+      .app-shell { padding: 0; }
+      .app-card { min-height: 100svh; border-radius: 0; border: 0; }
+      .screen { min-height: calc(100svh - 72px); padding: 22px 20px 26px; }
+      .topbar { padding-left: 19px; padding-right: 19px; }
+      .altar { height: 245px; }
+      .stage { height: 330px; transform: scale(.92); margin-top: -4px; }
+      .quiz-screen { height: calc(100svh - 72px); max-height: calc(100svh - 72px); padding: 16px 14px 18px; }
+      .quiz-screen.active { gap: 8px; }
+      .quiz-header h2 { font-size: 21px !important; }
+      .question-card { padding: 12px 14px; }
+      .question-text { font-size: clamp(16px, 4.8vw, 20px); line-height: 1.22; }
+      .options { gap: 7px; }
+      .option { min-height: 47px; padding: 8px 8px 8px 39px; font-size: 14px; line-height: 1.24; }
+      .option-letter { left: 8px; width: 24px; height: 24px; }
+      .feedback { padding: 8px 10px; font-size: 16px; line-height: 1.3; }
+      .quiz-actions .primary-btn { min-height: 47px; }
+    }
+
+    @media (max-height: 700px) {
+      .quiz-screen { padding-top: 12px; padding-bottom: 14px; }
+      .quiz-screen.active { gap: 7px; }
+      .quiz-header h2 { font-size: 20px !important; margin-top: 2px !important; }
+      .quiz-kicker { font-size: 9px; }
+      .question-card { padding: 10px 13px; }
+      .question-text { font-size: 17px; line-height: 1.2; }
+      .option { min-height: 43px; padding-top: 7px; padding-bottom: 7px; font-size: 11px; }
+      .feedback { padding: 7px 9px; font-size: 16px; }
+      .quiz-actions .primary-btn { min-height: 44px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    /* Three.js realistic casting stage — visual upgrade only */
+    .stage.three-stage {
+      position: relative;
+      width: 100%;
+      height: 360px;
+      margin-top: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(217, 164, 65, .22);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(255, 222, 169, .26), transparent 33%),
+        radial-gradient(ellipse at 50% 85%, rgba(217, 164, 65, .12), transparent 50%),
+        linear-gradient(180deg, rgba(62, 7, 18, .92), rgba(34, 5, 11, .96));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.11),
+        inset 0 -32px 70px rgba(10, 0, 3, .34),
+        0 16px 34px rgba(62, 7, 18, .17);
+      isolation: isolate;
+    }
+
+    .stage.three-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.24), transparent 18% 82%, rgba(0,0,0,.24)),
+        radial-gradient(circle at 50% 48%, transparent 45%, rgba(12, 0, 3, .32) 100%);
+    }
+
+    .stage.three-stage::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      z-index: 2;
+      width: 78%;
+      height: 1px;
+      pointer-events: none;
+      background: linear-gradient(90deg, transparent, rgba(245,217,140,.45), transparent);
+      transform: translateX(-50%);
+      box-shadow: 0 0 24px rgba(245,217,140,.18);
+    }
+
+    #jiaobeiCanvas {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: block;
+      outline: none;
+      touch-action: none;
+    }
+
+    .three-temple-glow {
+      position: absolute;
+      left: 50%;
+      top: -28px;
+      z-index: 0;
+      width: 260px;
+      height: 180px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(255,221,162,.24), rgba(227,24,55,.07) 48%, transparent 72%);
+      filter: blur(12px);
+      transform: translateX(-50%);
+    }
+
+    .three-incense-smoke {
+      position: absolute;
+      left: 50%;
+      top: 24px;
+      z-index: 3;
+      width: 70px;
+      height: 110px;
+      pointer-events: none;
+      opacity: .42;
+      filter: blur(5px);
+      background:
+        radial-gradient(ellipse at 44% 75%, rgba(255,244,226,.25), transparent 30%),
+        radial-gradient(ellipse at 58% 48%, rgba(255,244,226,.18), transparent 28%),
+        radial-gradient(ellipse at 42% 22%, rgba(255,244,226,.12), transparent 24%);
+      animation: threeSmoke 3.4s ease-in-out infinite;
+      transform: translateX(-50%);
+    }
+
+    @keyframes threeSmoke {
+      0% { transform: translateX(-50%) translateY(16px) scale(.74); opacity: 0; }
+      32% { opacity: .42; }
+      100% { transform: translateX(-42%) translateY(-26px) scale(1.28); opacity: 0; }
+    }
+
+    .three-loading {
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      z-index: 4;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: rgba(255,248,235,.72);
+      background: rgba(20,2,6,.34);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      pointer-events: none;
+      transform: translateX(-50%);
+      transition: opacity .3s ease;
+    }
+
+    .three-loading.ready { opacity: 0; }
+
+    @media (max-width: 520px) {
+      .stage.three-stage {
+        height: 330px;
+        margin-top: -4px;
+        transform: none;
+        border-radius: 20px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <main class="app-shell">
+    <section class="app-card" aria-live="polite">
+      <div class="ornament left"></div>
+      <div class="ornament right"></div>
+
+      <header class="topbar">
+        <div class="brand" aria-label="Jiaobei Wishes">
+          <div class="brand-mark">✦</div>
+          <span>Jiaobei Wishes</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-btn" id="fullscreenToggle" aria-label="Enter fullscreen" title="Enter fullscreen">⛶</button>
+          <button class="icon-btn" id="soundToggle" aria-label="Toggle sound" title="Toggle sound">♪</button>
+        </div>
+      </header>
+
+      <!-- Home -->
+      <section class="screen active" id="homeScreen">
+        <div class="eyebrow">DBS KNOWLEDGE LUCKY DRAW</div>
+        <h1 class="hero-title">DBS Knowledge Jiaobei<span>QUIZ · WISH · FORTUNE</span></h1>
+        <p class="hero-copy">Cast the traditional jiaobei blocks and discover today's guidance. An affirmative result takes you straight to the fortune draw; all other results unlock it after one DBS knowledge question.</p>
+
+        <div class="altar" aria-hidden="true">
+          <div class="halo"></div>
+          <div class="jiaobei-preview">
+            <div class="mini-piece one"></div>
+            <div class="mini-piece two"></div>
+          </div>
+        </div>
+
+        <button class="primary-btn" id="startBtn">Cast the Jiaobei</button>
+        <p class="tiny-note">Each cast is independently randomized · Complete this stage to unlock the fortune draw</p>
+      </section>
+
+      <!-- Casting animation -->
+      <section class="screen casting-screen" id="castingScreen">
+        <div class="eyebrow">SEEKING GUIDANCE</div>
+        <h2 class="casting-title">Casting…</h2>
+        <p class="casting-copy" id="castingCopy">Waiting for the blocks to settle</p>
+
+        <div class="stage three-stage" id="threeStage" aria-label="Realistic 3D jiaobei casting animation">
+          <div class="three-temple-glow" aria-hidden="true"></div>
+          <canvas id="jiaobeiCanvas" aria-hidden="true"></canvas>
+          <div class="three-incense-smoke" aria-hidden="true"></div>
+          <div class="three-loading" id="threeLoading">PREPARING 3D JIAOBEI</div>
+        </div>
+
+        <div class="casting-progress" aria-hidden="true"></div>
+      </section>
+
+      <!-- Result -->
+      <section class="screen result-screen" id="resultScreen">
+        <div class="result-seal" id="resultSeal">YES</div>
+        <h2 class="result-name" id="resultName">聖筊 (Affirmative Response)</h2>
+        <div class="result-tag" id="resultTag">AFFIRMATIVE · AUSPICIOUS</div>
+
+        <div class="result-visual" aria-hidden="true">
+          <div class="result-mini-pieces" id="resultMiniPieces">
+            <div class="result-mini a flat" id="resultPieceA"></div>
+            <div class="result-mini b" id="resultPieceB"></div>
+          </div>
+        </div>
+
+        <p class="result-desc" id="resultDescription"></p>
+
+        <div class="result-actions">
+          <button class="primary-btn" id="resultActionBtn">Continue to Fortune Draw</button>
+          <button class="secondary-btn" id="castAgainBtn" style="margin-top:10px; display:none;">Cast Again</button>
+        </div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="screen quiz-screen" id="quizScreen">
+        <div class="quiz-header">
+          <div>
+            <div class="quiz-kicker">DBS KNOWLEDGE CHALLENGE</div>
+            <h2 style="margin:6px 0 0; color:var(--wine); font-size:26px;">DBS Knowledge Challenge</h2>
+          </div>
+          <div class="quiz-badge" id="quizOutcomeBadge">Yin Jiao Question</div>
+        </div>
+
+        <article class="question-card">
+          <div class="question-number" id="questionNumber">QUESTION 01</div>
+          <h3 class="question-text" id="questionText"></h3>
+        </article>
+
+        <div class="options" id="options"></div>
+        <div class="feedback" id="feedback"></div>
+
+        <div class="quiz-actions">
+          <button class="primary-btn" id="submitAnswerBtn" disabled>Submit Answer</button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Fortune draw transition modal -->
+  <div class="modal-backdrop" id="rewardModal" role="dialog" aria-modal="true" aria-labelledby="rewardTitle">
+    <div class="reward-modal">
+      <div class="confetti-layer" id="confettiLayer"></div>
+      <div class="reward-icon">★</div>
+      <h2 id="rewardTitle">Your Fortune Draw Awaits</h2>
+      <p id="rewardSubtitle">You have completed the jiaobei stage. Continue to the fortune draw for your message of the day.</p>
+      <div class="reward-ticket" id="rewardText">The fortune draw is now unlocked</div>
+      <button class="primary-btn" id="claimAndReturnBtn">Continue to Fortune Draw</button>
+    </div>
+  </div>
+
+  <!-- Add ?debug=1 to the URL to display result test controls -->
+  <div class="debug-panel" id="debugPanel">
+    Test result:
+    <button data-force="sheng">YES</button>
+    <button data-force="xiao">?</button>
+    <button data-force="yin">NO</button>
+    <button data-force="li">UP</button>
+  </div>
+
+  <script>
+    let THREE = null;
+
+    /* ==========================================================
+       Frequently edited settings
+       ========================================================== */
+    const APP_CONFIG = {
+      fortuneText: "The fortune draw is now unlocked",
+      fortuneSubtitle: "You have completed the jiaobei stage. Continue to the fortune draw for your message of the day.",
+      // Enter the fortune-draw page URL here, for example: "fortune-draw.html"
+      // If left blank, the button returns to the jiaobei home screen.
+      fortuneDrawUrl: "",
+      castingDurationMs: 2680,
+      soundEnabled: true
+    };
+
+    // Each of the four outcomes has a 25% probability. Keep all weights totaling 1.
+    const OUTCOMES = {
+      sheng: {
+        name: "聖筊 (Affirmative Response)",
+        quizLabel: "Sheng Jiao",
+        seal: "聖",
+        tag: "AFFIRMATIVE · AUSPICIOUS",
+        weight: 0.25,
+        description: "One flat side and one rounded side form Sheng Jiao—an affirmative and auspicious response. You may proceed directly to the fortune draw without answering a question!",
+        faces: ["flat", "convex"],
+        action: "reward"
+      },
+      xiao: {
+        name: "笑筊 (Smiling Response)",
+        quizLabel: "Xiao Jiao",
+        seal: "笑",
+        tag: "UNCLEAR · ASK AGAIN",
+        weight: 0.25,
+        description: "Two flat sides form Xiao Jiao, suggesting an unclear question or a playful response. Complete one DBS knowledge question to unlock the fortune draw.",
+        faces: ["flat", "flat"],
+        action: "quiz",
+        questionPool: ["q3", "q4"]
+      },
+      yin: {
+        name: "陰筊 (Negative Response)",
+        quizLabel: "Yin Jiao",
+        seal: "陰",
+        tag: "NOT YET · RECONSIDER",
+        weight: 0.25,
+        description: "Two rounded sides form Yin Jiao, meaning no or not yet. Do not be discouraged—complete one DBS knowledge question to continue to the fortune draw.",
+        faces: ["convex", "convex"],
+        action: "quiz",
+        questionPool: ["q1", "q2"]
+      },
+      li: {
+        name: "立筊 (Standing Jiaobei)",
+        quizLabel: "Li Jiao",
+        seal: "立",
+        tag: "RARE · UNEXPECTED SIGN",
+        weight: 0.25,
+        description: "A block standing upright is a rare and extraordinary sight. Take one DBS knowledge challenge to unlock today's fortune draw.",
+        faces: ["upright", "upright"],
+        action: "quiz",
+        questionPool: ["q5", "q6"]
+      }
+    };
+
+    // Question pools: Yin Jiao q1/q2, Xiao Jiao q3/q4, Li Jiao q5/q6.
+    // correct uses 0–3, corresponding to options A–D.
+    const QUESTIONS = {
+      q1: {
+        text: "In which country is DBS Group headquartered?",
+        options: ["Singapore", "Japan", "United Kingdom", "Australia"],
+        correct: 0,
+        explanation: "DBS Group is headquartered and listed in Singapore."
+      },
+      q2: {
+        text: "According to DBS, across how many markets does the group operate?",
+        options: ["8 markets", "12 markets", "19 markets", "30 markets"],
+        correct: 2,
+        explanation: "DBS states that the group operates across 19 markets."
+      },
+      q3: {
+        text: "Which security verification is included when registering for DBS digibank?",
+        options: ["An OTP sent by text message", "Paper cheque verification", "Social media account verification", "A video interview"],
+        correct: 0,
+        explanation: "The registration process includes OTP verification by text message."
+      },
+      q4: {
+        text: "What is the primary purpose of DBS Card+?",
+        options: ["Foreign-currency cash reservations only", "One-stop digital credit card and loan services", "A corporate payroll system", "A stock research platform"],
+        correct: 1,
+        explanation: "DBS Card+ offers one-stop digital credit card and loan services for managing everyday finances."
+      },
+      q5: {
+        text: "What are the terms of a DBS sustainability-linked loan primarily tied to?",
+        options: ["The customer’s birthday", "Distance from a branch", "Performance against ESG-related indicators", "Number of credit cards held"],
+        correct: 2,
+        explanation: "A sustainability-linked loan connects its interest terms to performance against ESG-related indicators."
+      },
+      q6: {
+        text: "Which of the following is not one of DBS Group’s three Asian growth regions?",
+        options: ["Greater China", "Southeast Asia", "South Asia", "Northern Europe"],
+        correct: 3,
+        explanation: "DBS identifies Greater China, Southeast Asia, and South Asia as its three Asian growth regions."
+      }
+    };
+
+    /* ==========================================================
+       App state and DOM
+       ========================================================== */
+    const screens = {
+      home: document.getElementById("homeScreen"),
+      casting: document.getElementById("castingScreen"),
+      result: document.getElementById("resultScreen"),
+      quiz: document.getElementById("quizScreen")
+    };
+
+    const startBtn = document.getElementById("startBtn");
+    const threeStage = document.getElementById("threeStage");
+    const jiaobeiCanvas = document.getElementById("jiaobeiCanvas");
+    const threeLoading = document.getElementById("threeLoading");
+    const castingCopy = document.getElementById("castingCopy");
+    const resultSeal = document.getElementById("resultSeal");
+    const resultName = document.getElementById("resultName");
+    const resultTag = document.getElementById("resultTag");
+    const resultDescription = document.getElementById("resultDescription");
+    const resultActionBtn = document.getElementById("resultActionBtn");
+    const castAgainBtn = document.getElementById("castAgainBtn");
+    const resultPieceA = document.getElementById("resultPieceA");
+    const resultPieceB = document.getElementById("resultPieceB");
+    const resultMiniPieces = document.getElementById("resultMiniPieces");
+    const quizOutcomeBadge = document.getElementById("quizOutcomeBadge");
+    const questionNumber = document.getElementById("questionNumber");
+    const questionText = document.getElementById("questionText");
+    const optionsEl = document.getElementById("options");
+    const feedback = document.getElementById("feedback");
+    const submitAnswerBtn = document.getElementById("submitAnswerBtn");
+    const rewardModal = document.getElementById("rewardModal");
+    const rewardText = document.getElementById("rewardText");
+    const rewardSubtitle = document.getElementById("rewardSubtitle");
+    const claimAndReturnBtn = document.getElementById("claimAndReturnBtn");
+    const confettiLayer = document.getElementById("confettiLayer");
+    const fullscreenToggle = document.getElementById("fullscreenToggle");
+    const soundToggle = document.getElementById("soundToggle");
+    const debugPanel = document.getElementById("debugPanel");
+
+    let currentOutcomeKey = null;
+    let currentQuestionKey = null;
+    let selectedAnswer = null;
+    let answerSubmitted = false;
+    let forcedOutcome = null;
+    let audioContext = null;
+
+    // Three.js state
+    let renderer3D = null;
+    let scene3D = null;
+    let camera3D = null;
+    let floor3D = null;
+    let castAnimation3D = null;
+    let threeReady = false;
+    let threeBootPromise = null;
+    let renderLoopStarted = false;
+    let castInProgress = false;
+    let resizeObserver3D = null;
+    const jiaobeiObjects3D = [];
+
+    function showScreen(name) {
+      Object.values(screens).forEach(screen => screen.classList.remove("active"));
+      screens[name].classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Use the Crypto API for a more uniform random value from 0 to 1.
+    function secureRandom() {
+      if (window.crypto?.getRandomValues) {
+        const arr = new Uint32Array(1);
+        window.crypto.getRandomValues(arr);
+        return arr[0] / 4294967296;
+      }
+      return Math.random();
+    }
+
+    function randomItem(items) {
+      return items[Math.floor(secureRandom() * items.length)];
+    }
+
+    function getRandomOutcome() {
+      if (forcedOutcome) {
+        const selected = forcedOutcome;
+        forcedOutcome = null;
+        return selected;
+      }
+
+      const roll = secureRandom();
+      let cumulative = 0;
+      for (const [key, outcome] of Object.entries(OUTCOMES)) {
+        cumulative += outcome.weight;
+        if (roll < cumulative) return key;
+      }
+      return "li";
+    }
+
+
+    /* ==========================================================
+       Realistic Three.js jiaobei scene
+       ========================================================== */
+    function clamp01(value) {
+      return Math.min(1, Math.max(0, value));
+    }
+
+    function easeOutCubic(value) {
+      return 1 - Math.pow(1 - value, 3);
+    }
+
+    function easeInOutCubic(value) {
+      return value < .5
+        ? 4 * value * value * value
+        : 1 - Math.pow(-2 * value + 2, 3) / 2;
+    }
+
+    /* A+B realistic jiaobei upgrade: true half-moon silhouette, flat face, convex back, wood grain. */
+    function createJiaobeiShape(scale = 1) {
+      const shape = new THREE.Shape();
+
+      // A more temple-authentic crescent silhouette: pointed ends, a fuller outer arc,
+      // and a shallower inner arc so the body reads like a real jiaobei instead of a thick slab.
+      shape.moveTo(-1.74 * scale, -.05 * scale);
+      shape.bezierCurveTo(-1.61 * scale, -.70 * scale, -.92 * scale, -1.12 * scale, -.02 * scale, -1.10 * scale);
+      shape.bezierCurveTo(.90 * scale, -1.08 * scale, 1.54 * scale, -.66 * scale, 1.70 * scale, -.16 * scale);
+      shape.bezierCurveTo(1.77 * scale, .10 * scale, 1.58 * scale, .33 * scale, 1.20 * scale, .39 * scale);
+      shape.bezierCurveTo(.57 * scale, .47 * scale, -.10 * scale, .62 * scale, -.86 * scale, .76 * scale);
+      shape.bezierCurveTo(-1.35 * scale, .84 * scale, -1.66 * scale, .56 * scale, -1.72 * scale, .18 * scale);
+      shape.bezierCurveTo(-1.75 * scale, .07 * scale, -1.76 * scale, .00 * scale, -1.74 * scale, -.05 * scale);
+      shape.closePath();
+      return shape;
+    }
+
+    function createConvexCapGeometry() {
+      const outline = createJiaobeiShape(1).getSpacedPoints(104);
+      if (outline.length > 1 && outline[0].distanceTo(outline[outline.length - 1]) < .001) {
+        outline.pop();
+      }
+
+      // A smoother convex back that grows out of the body with a more rounded side profile.
+      const ridgeX = .03;
+      const ridgeY = -.18;
+      const ringScales = [1.00, .96, .89, .79, .66, .50, .32, .14];
+      const ringDepths = [.285, .345, .430, .535, .655, .760, .835, .885];
+      const positions = [];
+      const uvs = [];
+      const indices = [];
+      const ringCount = ringScales.length;
+      const pointCount = outline.length;
+
+      for (let ring = 0; ring < ringCount; ring += 1) {
+        const ringScale = ringScales[ring];
+        const liftBias = ring / (ringCount - 1);
+        for (let i = 0; i < pointCount; i += 1) {
+          const point = outline[i];
+          const x = ridgeX + (point.x - ridgeX) * ringScale + liftBias * .015;
+          const y = ridgeY + (point.y - ridgeY) * ringScale - liftBias * .010;
+          const z = ringDepths[ring];
+          positions.push(x, y, z);
+          uvs.push((x + 1.90) / 3.80, (y + 1.28) / 2.10);
+        }
+      }
+
+      positions.push(ridgeX + .02, ridgeY - .01, .905);
+      uvs.push((ridgeX + 1.90) / 3.80, (ridgeY + 1.28) / 2.10);
+      const centerIndex = positions.length / 3 - 1;
+
+      for (let ring = 0; ring < ringCount - 1; ring += 1) {
+        for (let i = 0; i < pointCount; i += 1) {
+          const next = (i + 1) % pointCount;
+          const a = ring * pointCount + i;
+          const b = ring * pointCount + next;
+          const c = (ring + 1) * pointCount + next;
+          const d = (ring + 1) * pointCount + i;
+          indices.push(a, b, d, b, c, d);
+        }
+      }
+
+      const lastRingStart = (ringCount - 1) * pointCount;
+      for (let i = 0; i < pointCount; i += 1) {
+        const next = (i + 1) % pointCount;
+        indices.push(lastRingStart + i, lastRingStart + next, centerIndex);
+      }
+
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+      geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2));
+      geometry.setIndex(indices);
+      geometry.computeVertexNormals();
+      geometry.computeBoundingSphere();
+      return geometry;
+    }
+
+    function createRimTube(scale, zPosition, radius = .026) {
+      const points2D = createJiaobeiShape(scale).getSpacedPoints(112);
+      if (points2D.length > 1 && points2D[0].distanceTo(points2D[points2D.length - 1]) < .001) {
+        points2D.pop();
+      }
+      const points3D = points2D.map(point => new THREE.Vector3(point.x, point.y, zPosition));
+      const curve = new THREE.CatmullRomCurve3(points3D, true, "centripetal");
+      return new THREE.TubeGeometry(curve, 180, radius, 8, true);
+    }
+    function sculptJiaobeiBodyGeometry(geometry) {
+      const position = geometry.attributes.position;
+      const backZ = -.31;
+      const frontZ = .31;
+
+      for (let i = 0; i < position.count; i += 1) {
+        let x = position.getX(i);
+        let y = position.getY(i);
+        let z = position.getZ(i);
+
+        const depthT = THREE.MathUtils.clamp((z - backZ) / (frontZ - backZ), 0, 1);
+        const radial = Math.min(1, Math.hypot(x / 1.78, y / 1.22));
+        const sideRound = Math.sin(depthT * Math.PI);
+        const bodySwell = Math.pow(sideRound, .92);
+        const edgeWeight = Math.pow(radial, 1.45);
+
+        // Make the section swell into a rounded side wall instead of reading as a flat slab.
+        const xScale = .82 + bodySwell * (.18 + edgeWeight * .05) + depthT * .015;
+        const yScale = .88 + bodySwell * (.12 + edgeWeight * .04) + depthT * .01;
+        x *= xScale;
+        y *= yScale;
+
+        // Keep one side genuinely flat, then quickly roll outward into the rounded body.
+        if (depthT < .14) {
+          const local = depthT / .14;
+          z = THREE.MathUtils.lerp(backZ + radial * .004, z + edgeWeight * .02, local * local);
+        } else {
+          const rolled = Math.sin((depthT - .14) / .86 * Math.PI * .5);
+          z += rolled * (.060 + edgeWeight * .090) - (1 - depthT) * edgeWeight * .015;
+        }
+
+        position.setXYZ(i, x, y, z);
+      }
+
+      position.needsUpdate = true;
+      geometry.computeVertexNormals();
+      geometry.computeBoundingSphere();
+      return geometry;
+    }
+
+
+    function makeJiaobeiWoodTexture(index = 0, flat = false) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 768;
+      canvas.height = 512;
+      const ctx = canvas.getContext("2d");
+
+      const gradient = ctx.createLinearGradient(40, 20, 730, 500);
+      if (flat) {
+        gradient.addColorStop(0, index === 0 ? "#c95a49" : "#cf6251");
+        gradient.addColorStop(.48, index === 0 ? "#93372a" : "#9b3d2f");
+        gradient.addColorStop(1, "#5f211b");
+      } else {
+        gradient.addColorStop(0, index === 0 ? "#b53c34" : "#bb433b");
+        gradient.addColorStop(.48, index === 0 ? "#7f261f" : "#872d25");
+        gradient.addColorStop(1, "#4d1713");
+      }
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Long, slightly irregular wood fibres that remain visible under the lacquer.
+      const fibreCount = flat ? 152 : 132;
+      for (let i = 0; i < fibreCount; i += 1) {
+        const y = (i / fibreCount) * canvas.height + (secureRandom() - .5) * 9;
+        const alpha = (flat ? .075 : .055) + secureRandom() * (flat ? .11 : .085);
+        ctx.strokeStyle = `rgba(255, 206, 172, ${alpha})`;
+        ctx.lineWidth = .45 + secureRandom() * 1.35;
+        ctx.beginPath();
+        ctx.moveTo(-20, y);
+        ctx.bezierCurveTo(
+          170, y - 12 + secureRandom() * 24,
+          520, y + 13 - secureRandom() * 26,
+          790, y - 4 + secureRandom() * 8
+        );
+        ctx.stroke();
+      }
+
+      for (let i = 0; i < 42; i += 1) {
+        const y = secureRandom() * canvas.height;
+        ctx.strokeStyle = `rgba(82, 31, 20, ${.045 + secureRandom() * .075})`;
+        ctx.lineWidth = .6 + secureRandom() * 1.4;
+        ctx.beginPath();
+        ctx.moveTo(-10, y);
+        ctx.bezierCurveTo(220, y + 16, 510, y - 18, 790, y + 5);
+        ctx.stroke();
+      }
+
+      // Dry-brush streaks and a few subtle knots stop the surface from looking procedurally perfect.
+      for (let i = 0; i < 22; i += 1) {
+        const x = -40 + secureRandom() * 860;
+        const y = secureRandom() * canvas.height;
+        ctx.strokeStyle = `rgba(255, 229, 208, ${flat ? .035 : .024})`;
+        ctx.lineWidth = .5 + secureRandom() * 1.2;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + 120 + secureRandom() * 180, y + (secureRandom() - .5) * 18);
+        ctx.stroke();
+      }
+
+      for (let i = 0; i < 9; i += 1) {
+        const x = 80 + secureRandom() * 610;
+        const y = 55 + secureRandom() * 400;
+        const radius = 10 + secureRandom() * 22;
+        const knot = ctx.createRadialGradient(x, y, 1, x, y, radius);
+        knot.addColorStop(0, "rgba(67,28,18,.18)");
+        knot.addColorStop(.48, "rgba(236,182,147,.06)");
+        knot.addColorStop(1, "rgba(67,28,18,0)");
+        ctx.fillStyle = knot;
+        ctx.beginPath();
+        ctx.ellipse(x, y, radius * 1.8, radius * .62, -.12, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.wrapS = THREE.ClampToEdgeWrapping;
+      texture.wrapT = THREE.ClampToEdgeWrapping;
+      texture.anisotropy = 8;
+      return texture;
+    }
+
+    function makeJiaobeiBumpTexture(flat = false) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 512;
+      canvas.height = 512;
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = flat ? "#898989" : "#7a7a7a";
+      ctx.fillRect(0, 0, 512, 512);
+
+      const lines = flat ? 210 : 178;
+      for (let i = 0; i < lines; i += 1) {
+        const y = (i / lines) * 512 + (secureRandom() - .5) * 8;
+        const value = 95 + Math.floor(secureRandom() * 88);
+        ctx.strokeStyle = `rgb(${value},${value},${value})`;
+        ctx.lineWidth = .6 + secureRandom() * 1.5;
+        ctx.beginPath();
+        ctx.moveTo(-10, y);
+        ctx.bezierCurveTo(145, y - 11, 360, y + 12, 522, y - 3);
+        ctx.stroke();
+      }
+
+      for (let i = 0; i < 26; i += 1) {
+        const x = secureRandom() * 512;
+        const y = secureRandom() * 512;
+        const r = 2 + secureRandom() * 5;
+        ctx.fillStyle = `rgba(${80 + Math.floor(secureRandom() * 45)}, ${80 + Math.floor(secureRandom() * 45)}, ${80 + Math.floor(secureRandom() * 45)}, .28)`;
+        ctx.beginPath();
+        ctx.ellipse(x, y, r * 1.8, r * .5, secureRandom() * Math.PI, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.wrapS = THREE.ClampToEdgeWrapping;
+      texture.wrapT = THREE.ClampToEdgeWrapping;
+      texture.anisotropy = 4;
+      return texture;
+    }
+
+    function makeTableTexture() {
+      const canvas = document.createElement("canvas");
+      canvas.width = 1024;
+      canvas.height = 1024;
+      const ctx = canvas.getContext("2d");
+
+      const base = ctx.createLinearGradient(0, 0, 1024, 1024);
+      base.addColorStop(0, "#5b2b20");
+      base.addColorStop(.46, "#3c1714");
+      base.addColorStop(1, "#210809");
+      ctx.fillStyle = base;
+      ctx.fillRect(0, 0, 1024, 1024);
+
+      // Broad timber bands.
+      for (let band = 0; band < 16; band += 1) {
+        const y = band * 64 + (secureRandom() - .5) * 10;
+        ctx.fillStyle = `rgba(238, 170, 104, ${.012 + secureRandom() * .025})`;
+        ctx.fillRect(0, y, 1024, 30 + secureRandom() * 42);
+      }
+
+      // Fine grain.
+      for (let i = 0; i < 210; i += 1) {
+        const y = (i / 210) * 1024 + (secureRandom() - .5) * 10;
+        ctx.strokeStyle = `rgba(242, 184, 113, ${.018 + secureRandom() * .042})`;
+        ctx.lineWidth = .45 + secureRandom() * 1.25;
+        ctx.beginPath();
+        ctx.moveTo(-20, y);
+        ctx.bezierCurveTo(260, y - 15 + secureRandom() * 30, 690, y + 16 - secureRandom() * 32, 1044, y);
+        ctx.stroke();
+      }
+
+      // Dark pores and knots.
+      for (let i = 0; i < 12; i += 1) {
+        const x = secureRandom() * 1024;
+        const y = secureRandom() * 1024;
+        const r = 18 + secureRandom() * 48;
+        const knot = ctx.createRadialGradient(x, y, 2, x, y, r);
+        knot.addColorStop(0, "rgba(18,1,3,.32)");
+        knot.addColorStop(.35, "rgba(113,53,35,.18)");
+        knot.addColorStop(1, "rgba(18,1,3,0)");
+        ctx.fillStyle = knot;
+        ctx.beginPath();
+        ctx.ellipse(x, y, r * 1.7, r * .52, -.08, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      texture.repeat.set(1.55, 1.10);
+      texture.anisotropy = 8;
+      return texture;
+    }
+
+    function makeSoftShadowTexture() {
+      const canvas = document.createElement("canvas");
+      canvas.width = 256;
+      canvas.height = 256;
+      const ctx = canvas.getContext("2d");
+      const gradient = ctx.createRadialGradient(128, 128, 6, 128, 128, 122);
+      gradient.addColorStop(0, "rgba(5,0,2,.68)");
+      gradient.addColorStop(.35, "rgba(5,0,2,.40)");
+      gradient.addColorStop(.72, "rgba(5,0,2,.12)");
+      gradient.addColorStop(1, "rgba(5,0,2,0)");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 256, 256);
+      return new THREE.CanvasTexture(canvas);
+    }
+
+    function createJiaobeiModel(index) {
+      const group = new THREE.Group();
+      group.rotation.order = "XYZ";
+
+      const bodyTexture = makeJiaobeiWoodTexture(index, false);
+      const flatTexture = makeJiaobeiWoodTexture(index, true);
+      const bodyBump = makeJiaobeiBumpTexture(false);
+      const flatBump = makeJiaobeiBumpTexture(true);
+
+      const lacquerMaterial = new THREE.MeshPhysicalMaterial({
+        color: index === 0 ? 0x9a352c : 0xa33d34,
+        map: bodyTexture,
+        bumpMap: bodyBump,
+        bumpScale: .046,
+        roughness: .68,
+        metalness: .003,
+        clearcoat: .16,
+        clearcoatRoughness: .62,
+        sheen: .05,
+        sheenColor: new THREE.Color(0x592119),
+        side: THREE.DoubleSide
+      });
+
+      const convexMaterial = new THREE.MeshPhysicalMaterial({
+        color: index === 0 ? 0xa93f35 : 0xb3473d,
+        map: bodyTexture,
+        bumpMap: bodyBump,
+        bumpScale: .042,
+        roughness: .60,
+        metalness: .003,
+        clearcoat: .20,
+        clearcoatRoughness: .52,
+        sheen: .06,
+        sheenColor: new THREE.Color(0x61251b),
+        side: THREE.DoubleSide
+      });
+
+      const flatMaterial = new THREE.MeshPhysicalMaterial({
+        color: index === 0 ? 0xb8604e : 0xc16a56,
+        map: flatTexture,
+        bumpMap: flatBump,
+        bumpScale: .072,
+        roughness: .78,
+        metalness: .002,
+        clearcoat: .06,
+        clearcoatRoughness: .80,
+        side: THREE.DoubleSide
+      });
+
+      const goldMaterial = new THREE.MeshStandardMaterial({
+        color: 0xb88a47,
+        roughness: .62,
+        metalness: .18,
+        emissive: 0x221102,
+        emissiveIntensity: .03
+      });
+
+      const bodyGeometry = new THREE.ExtrudeGeometry(createJiaobeiShape(1), {
+        depth: .56,
+        bevelEnabled: true,
+        bevelSegments: 9,
+        steps: 1,
+        bevelSize: .10,
+        bevelThickness: .10,
+        curveSegments: 72
+      });
+      bodyGeometry.translate(0, 0, -.28);
+      sculptJiaobeiBodyGeometry(bodyGeometry);
+      bodyGeometry.computeVertexNormals();
+
+      const body = new THREE.Mesh(bodyGeometry, lacquerMaterial);
+      group.add(body);
+
+      const convexCap = new THREE.Mesh(createConvexCapGeometry(), convexMaterial);
+      group.add(convexCap);
+
+      const flatFace = new THREE.Mesh(new THREE.ShapeGeometry(createJiaobeiShape(.885), 72), flatMaterial);
+      flatFace.position.z = -.390;
+      flatFace.rotation.y = Math.PI;
+      group.add(flatFace);
+
+      // Keep the requested premium gold edge, but reduce it so the form still reads as real wood.
+      const outerGoldFront = new THREE.Mesh(createRimTube(1.004, .318, .021), goldMaterial);
+      const outerGoldBack = new THREE.Mesh(createRimTube(1.004, -.302, .020), goldMaterial);
+      const innerGoldBack = new THREE.Mesh(createRimTube(.885, -.392, .014), goldMaterial);
+      [outerGoldFront, outerGoldBack, innerGoldBack].forEach(mesh => group.add(mesh));
+
+      const highlight = new THREE.Mesh(
+        new THREE.SphereGeometry(.50, 40, 20, 0, Math.PI * 2, 0, Math.PI / 2),
+        new THREE.MeshBasicMaterial({
+          color: 0xffffff,
+          transparent: true,
+          opacity: .008,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false
+        })
+      );
+      highlight.scale.set(1.75, .76, .13);
+      highlight.position.set(-.36, -.04, .79);
+      highlight.rotation.z = -.12;
+      group.add(highlight);
+
+      group.scale.setScalar(.68);
+
+      const shadow = new THREE.Mesh(
+        new THREE.PlaneGeometry(2.8, 2.8),
+        new THREE.MeshBasicMaterial({
+          map: makeSoftShadowTexture(),
+          transparent: true,
+          opacity: .22,
+          depthWrite: false,
+          color: 0x120205,
+          blending: THREE.NormalBlending
+        })
+      );
+      shadow.rotation.x = -Math.PI / 2;
+      shadow.scale.set(1.20, .58, 1);
+      shadow.position.y = -1.314;
+      shadow.renderOrder = 2;
+      scene3D.add(shadow);
+
+      group.traverse(object => {
+        if (object.isMesh) {
+          object.castShadow = true;
+          object.receiveShadow = true;
+        }
+      });
+
+      scene3D.add(group);
+      return { group, shadow };
+    }
+
+    function addTempleLighting() {
+      scene3D.add(new THREE.HemisphereLight(0xffdcc2, 0x160207, 1.28));
+
+      const key = new THREE.SpotLight(0xffd5a3, 74, 19, Math.PI / 4.8, .68, 1.22);
+      key.position.set(-2.8, 5.7, 4.7);
+      key.target.position.set(0, -.42, 0);
+      key.castShadow = true;
+      key.shadow.mapSize.set(1024, 1024);
+      key.shadow.bias = -.00012;
+      key.shadow.camera.near = .6;
+      key.shadow.camera.far = 18;
+      scene3D.add(key, key.target);
+
+      const fill = new THREE.PointLight(0xe31837, 12, 10, 1.8);
+      fill.position.set(3.3, 1.3, 2.4);
+      scene3D.add(fill);
+
+      const rim = new THREE.DirectionalLight(0xffe9bf, 2.25);
+      rim.position.set(1.7, 3.5, -3.7);
+      scene3D.add(rim);
+
+      const altarGlow = new THREE.PointLight(0xd9a441, 7.5, 8, 1.9);
+      altarGlow.position.set(0, -.65, 2.25);
+      scene3D.add(altarGlow);
+    }
+
+    function initThreeScene() {
+      if (renderer3D || !THREE) return;
+
+      renderer3D = new THREE.WebGLRenderer({
+        canvas: jiaobeiCanvas,
+        antialias: true,
+        alpha: true,
+        powerPreference: "high-performance"
+      });
+      renderer3D.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer3D.shadowMap.enabled = true;
+      renderer3D.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer3D.outputColorSpace = THREE.SRGBColorSpace;
+      renderer3D.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer3D.toneMappingExposure = 1.12;
+
+      scene3D = new THREE.Scene();
+      camera3D = new THREE.PerspectiveCamera(32, 1, .1, 100);
+      camera3D.position.set(0, 2.72, 8.55);
+      camera3D.lookAt(0, -.30, 0);
+
+      addTempleLighting();
+
+      const tableTexture = makeTableTexture();
+      floor3D = new THREE.Mesh(
+        new THREE.PlaneGeometry(11, 7),
+        new THREE.MeshPhysicalMaterial({
+          map: tableTexture,
+          bumpMap: tableTexture,
+          bumpScale: .022,
+          color: 0x6a3326,
+          roughness: .57,
+          metalness: .01,
+          clearcoat: .27,
+          clearcoatRoughness: .39
+        })
+      );
+      floor3D.rotation.x = -Math.PI / 2;
+      floor3D.position.y = -1.33;
+      floor3D.receiveShadow = true;
+      scene3D.add(floor3D);
+
+      const altarRing = new THREE.Mesh(
+        new THREE.RingGeometry(1.55, 1.59, 96),
+        new THREE.MeshBasicMaterial({
+          color: 0xd9a441,
+          transparent: true,
+          opacity: .28,
+          side: THREE.DoubleSide,
+          depthWrite: false
+        })
+      );
+      altarRing.rotation.x = -Math.PI / 2;
+      altarRing.scale.y = .58;
+      altarRing.position.set(0, -1.318, -.15);
+      scene3D.add(altarRing);
+
+      jiaobeiObjects3D.push(createJiaobeiModel(0), createJiaobeiModel(1));
+
+      resizeThreeScene();
+      if (window.ResizeObserver) {
+        resizeObserver3D = new ResizeObserver(resizeThreeScene);
+        resizeObserver3D.observe(threeStage);
+      } else {
+        window.addEventListener("resize", resizeThreeScene);
+      }
+
+      threeReady = true;
+      threeLoading.classList.add("ready");
+      resetThreeScene();
+
+      if (!renderLoopStarted) {
+        renderLoopStarted = true;
+        renderThreeScene();
+      }
+    }
+
+    function getThreeStageSize() {
+      const rect = threeStage.getBoundingClientRect();
+      return {
+        width: Math.round(rect.width || threeStage.clientWidth || 0),
+        height: Math.round(rect.height || threeStage.clientHeight || 0)
+      };
+    }
+
+    function resizeThreeScene() {
+      if (!renderer3D || !camera3D) return false;
+      const { width, height } = getThreeStageSize();
+      if (width < 20 || height < 20) return false;
+
+      renderer3D.setSize(width, height, false);
+      camera3D.aspect = width / height;
+      camera3D.updateProjectionMatrix();
+      return true;
+    }
+
+    function nextPaint() {
+      return new Promise(resolve => requestAnimationFrame(() => resolve()));
+    }
+
+    async function waitForVisibleThreeStage(maxFrames = 45) {
+      for (let frame = 0; frame < maxFrames; frame += 1) {
+        // Force layout before measuring; this helps browser-isolation environments.
+        void threeStage.offsetWidth;
+        const { width, height } = getThreeStageSize();
+        if (width >= 20 && height >= 20) return true;
+        await nextPaint();
+      }
+
+      // Some enterprise browsers update remote layout on a timer rather than rAF.
+      await new Promise(resolve => setTimeout(resolve, 180));
+      const { width, height } = getThreeStageSize();
+      return width >= 20 && height >= 20;
+    }
+
+    function scheduleThreeResizes() {
+      resizeThreeScene();
+      requestAnimationFrame(() => {
+        resizeThreeScene();
+        requestAnimationFrame(resizeThreeScene);
+      });
+      [80, 220, 500, 900].forEach(delay => setTimeout(resizeThreeScene, delay));
+    }
+
+    async function ensureThreeSceneReady() {
+      const stageVisible = await waitForVisibleThreeStage();
+      if (!stageVisible) {
+        console.error("3D stage remained at zero size after becoming active.");
+        threeLoading.textContent = "3D STAGE SIZE ERROR";
+        threeLoading.classList.remove("ready");
+        return false;
+      }
+
+      const booted = await bootThreeScene();
+      if (!booted) return false;
+
+      scheduleThreeResizes();
+      return true;
+    }
+
+    function getFinalPose(key, index) {
+      const positions = {
+        // rx +90° = flat carved face upward; rx -90° = convex lacquered back upward.
+        sheng: [
+          { x: -1.05, y: -.75, z: -.11, rx: Math.PI / 2, ry: .035, rz: -.25 },
+          { x: 1.03, y: -1.05, z: .10, rx: -Math.PI / 2, ry: -.045, rz: .28 }
+        ],
+        xiao: [
+          { x: -1.04, y: -.75, z: -.10, rx: Math.PI / 2, ry: .035, rz: -.27 },
+          { x: 1.04, y: -.75, z: .08, rx: Math.PI / 2, ry: -.028, rz: .31 }
+        ],
+        yin: [
+          { x: -1.04, y: -1.05, z: -.09, rx: -Math.PI / 2, ry: .035, rz: -.25 },
+          { x: 1.04, y: -1.05, z: .08, rx: -Math.PI / 2, ry: -.035, rz: .29 }
+        ],
+        li: [
+          { x: -.79, y: -.54, z: -.10, rx: .015, ry: -.08, rz: -.052 },
+          { x: .83, y: -.54, z: .05, rx: -.015, ry: .08, rz: .060 }
+        ]
+      };
+      return positions[key][index] || positions.sheng[index];
+    }
+
+    function setModelPose(object, pose) {
+      object.group.position.set(pose.x, pose.y, pose.z);
+      object.group.rotation.set(pose.rx, pose.ry, pose.rz);
+      object.shadow.position.set(pose.x, -1.314, pose.z);
+      object.shadow.rotation.set(-Math.PI / 2, 0, pose.rz);
+      object.shadow.scale.set(1.22, .59, 1);
+      object.shadow.material.opacity = .225;
+    }
+
+    function resetThreeScene() {
+      if (!threeReady) return;
+      castAnimation3D = null;
+      const starts = [
+        { x: -.34, y: -.78, z: 1.16, rx: -.14, ry: .13, rz: -.24 },
+        { x: .34, y: -.78, z: 1.22, rx: .14, ry: -.11, rz: .24 }
+      ];
+      jiaobeiObjects3D.forEach((object, index) => {
+        setModelPose(object, starts[index]);
+        object.group.scale.setScalar(.68);
+        object.shadow.material.opacity = .10;
+        object.shadow.scale.set(1.02, .46, 1);
+      });
+    }
+
+    function startThreeCast(key) {
+      if (!threeReady) return;
+      resetThreeScene();
+      castAnimation3D = {
+        key,
+        start: performance.now(),
+        duration: Math.max(2350, APP_CONFIG.castingDurationMs - 120)
+      };
+    }
+
+    function updateThreeCast(now) {
+      if (!castAnimation3D) return;
+      const elapsed = now - castAnimation3D.start;
+      const t = clamp01(elapsed / castAnimation3D.duration);
+      const key = castAnimation3D.key;
+
+      jiaobeiObjects3D.forEach((object, index) => {
+        const delay = index * .032;
+        const localT = clamp01((t - delay) / (1 - delay));
+        const finalPose = getFinalPose(key, index);
+        const startX = index === 0 ? -.34 : .34;
+        const startY = -.78;
+        const startZ = index === 0 ? 1.16 : 1.22;
+        const direction = index === 0 ? -1 : 1;
+
+        let x;
+        let y;
+        let z;
+        let rx;
+        let ry;
+        let rz;
+
+        // A lower arc and fewer full rotations make the wooden blocks feel heavier.
+        if (localT < .72) {
+          const flight = localT / .72;
+          const travel = easeInOutCubic(flight);
+          const apex = Math.pow(Math.sin(Math.PI * flight), .82);
+          x = THREE.MathUtils.lerp(startX, finalPose.x + direction * .19, travel);
+          y = THREE.MathUtils.lerp(startY, finalPose.y + .10, travel) + apex * (2.43 + index * .10);
+          z = THREE.MathUtils.lerp(startZ, finalPose.z - .13, travel) + Math.sin(Math.PI * flight) * direction * .28;
+
+          rx = THREE.MathUtils.lerp(index ? .14 : -.14, finalPose.rx + direction * Math.PI * 4, travel);
+          ry = THREE.MathUtils.lerp(index ? -.11 : .13, finalPose.ry - direction * Math.PI * 2, travel);
+          rz = THREE.MathUtils.lerp(index ? .24 : -.24, finalPose.rz + direction * Math.PI * 2, travel);
+        } else {
+          const settle = (localT - .72) / .28;
+          const eased = easeInOutCubic(settle);
+          const decay = Math.exp(-6.6 * settle);
+          const bounce = Math.abs(Math.sin(settle * Math.PI * 2.55)) * .19 * Math.pow(1 - settle, 2.15);
+          const slide = (1 - eased) * direction * .19;
+
+          x = finalPose.x + slide;
+          y = finalPose.y + bounce;
+          z = finalPose.z - (1 - eased) * .13;
+          rx = finalPose.rx + Math.sin(settle * Math.PI * 2.6) * decay * .17 * direction;
+          ry = finalPose.ry + Math.sin(settle * Math.PI * 2.2) * decay * .11;
+          rz = finalPose.rz + Math.sin(settle * Math.PI * 2.9) * decay * .14 * direction;
+        }
+
+        object.group.position.set(x, y, z);
+        object.group.rotation.set(rx, ry, rz);
+
+        const height = Math.max(0, y - finalPose.y);
+        object.shadow.position.set(x, -1.314, z);
+        object.shadow.rotation.set(-Math.PI / 2, 0, rz);
+        object.shadow.scale.set(1.08 + height * .22, .49 + height * .075, 1);
+        object.shadow.material.opacity = THREE.MathUtils.clamp(.235 - height * .075, .028, .225);
+      });
+
+      if (t >= 1) {
+        jiaobeiObjects3D.forEach((object, index) => setModelPose(object, getFinalPose(key, index)));
+        castAnimation3D = null;
+      }
+    }
+
+    function renderThreeScene(now = performance.now()) {
+      if (!renderer3D || !scene3D || !camera3D) return;
+      updateThreeCast(now);
+      renderer3D.render(scene3D, camera3D);
+      requestAnimationFrame(renderThreeScene);
+    }
+
+    function resetPieceClasses() {
+      resetThreeScene();
+    }
+
+    async function castJiaobei() {
+      if (castInProgress) return;
+      castInProgress = true;
+
+      currentOutcomeKey = getRandomOutcome();
+      currentQuestionKey = null;
+      selectedAnswer = null;
+      answerSubmitted = false;
+
+      showScreen("casting");
+      castingCopy.textContent = "Preparing the 3D jiaobei…";
+
+      if (!threeReady) {
+        threeLoading.textContent = "PREPARING 3D JIAOBEI";
+        threeLoading.classList.remove("ready");
+      }
+
+      const ready = await ensureThreeSceneReady();
+      castingCopy.textContent = ready
+        ? "Waiting for the blocks to settle"
+        : "3D unavailable — continuing to the result";
+
+      if (ready) {
+        resetPieceClasses();
+        startThreeCast(currentOutcomeKey);
+      }
+
+      playThrowSound();
+
+      const messages = ["Seeking guidance…", "Fortune is turning…", "The blocks are about to settle…"];
+      let messageIndex = 0;
+      const messageTimer = setInterval(() => {
+        castingCopy.textContent = messages[messageIndex % messages.length];
+        messageIndex += 1;
+      }, 650);
+
+      setTimeout(() => {
+        clearInterval(messageTimer);
+        playLandingSound();
+      }, 2060);
+
+      setTimeout(() => {
+        renderResult(currentOutcomeKey);
+        showScreen("result");
+        playResultChime(currentOutcomeKey === "sheng");
+        castInProgress = false;
+      }, APP_CONFIG.castingDurationMs);
+    }
+
+    function renderResult(key) {
+      const outcome = OUTCOMES[key];
+      resultSeal.textContent = outcome.seal;
+      resultName.textContent = outcome.name;
+      resultTag.textContent = outcome.tag;
+      resultDescription.textContent = outcome.description;
+      resultActionBtn.textContent = outcome.action === "reward" ? "Continue to Fortune Draw" : "View Question";
+      renderMiniPieces(outcome.faces);
+    }
+
+    function renderMiniPieces(faces) {
+      resultPieceA.className = "result-mini a";
+      resultPieceB.className = "result-mini b";
+      resultMiniPieces.classList.remove("upright-mode");
+
+      if (faces[0] === "upright") {
+        resultPieceA.classList.add("upright");
+        resultPieceB.classList.add("upright");
+      } else {
+        resultPieceA.classList.add(faces[0]);
+        resultPieceB.classList.add(faces[1]);
+      }
+    }
+
+    function openQuiz() {
+      const outcome = OUTCOMES[currentOutcomeKey];
+      currentQuestionKey = randomItem(outcome.questionPool);
+      const question = QUESTIONS[currentQuestionKey];
+      selectedAnswer = null;
+      answerSubmitted = false;
+
+      quizOutcomeBadge.textContent = `${outcome.quizLabel || outcome.name} Question`;
+      questionNumber.textContent = `QUESTION ${currentQuestionKey.replace("q", "").padStart(2, "0")}`;
+      questionText.textContent = question.text;
+      feedback.className = "feedback";
+      feedback.innerHTML = "";
+      submitAnswerBtn.disabled = true;
+      submitAnswerBtn.textContent = "Submit Answer";
+      optionsEl.innerHTML = "";
+
+      question.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.className = "option";
+        button.type = "button";
+        button.innerHTML = `<span class="option-letter">${String.fromCharCode(65 + index)}</span>${option}`;
+        button.addEventListener("click", () => selectAnswer(index));
+        optionsEl.appendChild(button);
+      });
+
+      showScreen("quiz");
+    }
+
+    function selectAnswer(index) {
+      if (answerSubmitted) return;
+      selectedAnswer = index;
+      [...optionsEl.children].forEach((el, i) => el.classList.toggle("selected", i === index));
+      submitAnswerBtn.disabled = false;
+    }
+
+    function submitAnswer() {
+      if (selectedAnswer === null || answerSubmitted) return;
+      answerSubmitted = true;
+
+      const question = QUESTIONS[currentQuestionKey];
+      const isCorrect = selectedAnswer === question.correct;
+      const optionButtons = [...optionsEl.children];
+
+      optionButtons.forEach((button, index) => {
+        button.disabled = true;
+        if (index === question.correct) button.classList.add("correct");
+        if (index === selectedAnswer && !isCorrect) button.classList.add("wrong");
+      });
+
+      feedback.className = `feedback show ${isCorrect ? "correct" : "wrong"}`;
+      feedback.innerHTML = `
+        <strong>${isCorrect ? "Correct! Knowledge and good fortune are on your side." : "Almost! Here is the correct answer."}</strong>
+        ${question.explanation}<br>Whether your answer was right or wrong, you may continue to the fortune draw.
+      `;
+      submitAnswerBtn.textContent = "Continue to Fortune Draw";
+      playAnswerTone(isCorrect);
+    }
+
+    function openReward() {
+      rewardText.textContent = APP_CONFIG.fortuneText;
+      rewardSubtitle.textContent = APP_CONFIG.fortuneSubtitle;
+      createConfetti();
+      rewardModal.classList.add("show");
+      document.body.style.overflow = "hidden";
+      playRewardFanfare();
+    }
+
+    function closeRewardAndReset() {
+      rewardModal.classList.remove("show");
+      document.body.style.overflow = "";
+      resetThreeScene();
+      currentOutcomeKey = null;
+      currentQuestionKey = null;
+      selectedAnswer = null;
+      answerSubmitted = false;
+      showScreen("home");
+    }
+
+    function createConfetti() {
+      const colors = ["#e31837", "#8f0e1e", "#d9a441", "#f5d98c", "#ffffff"];
+      confettiLayer.innerHTML = "";
+      for (let i = 0; i < 34; i += 1) {
+        const bit = document.createElement("span");
+        bit.className = "confetti";
+        bit.style.left = `${secureRandom() * 100}%`;
+        bit.style.background = colors[Math.floor(secureRandom() * colors.length)];
+        bit.style.animationDelay = `${secureRandom() * 1.7}s`;
+        bit.style.animationDuration = `${2 + secureRandom() * 1.8}s`;
+        bit.style.setProperty("--drift", `${-55 + secureRandom() * 110}px`);
+        bit.style.transform = `rotate(${secureRandom() * 180}deg)`;
+        confettiLayer.appendChild(bit);
+      }
+    }
+
+    /* ==========================================================
+       Browser-generated sound effects; no external audio files required
+       ========================================================== */
+    function getAudioContext() {
+      if (!APP_CONFIG.soundEnabled) return null;
+      if (!audioContext) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return null;
+        audioContext = new AudioCtx();
+      }
+      if (audioContext.state === "suspended") audioContext.resume();
+      return audioContext;
+    }
+
+    function tone(freq, start, duration, type = "sine", volume = .055) {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, ctx.currentTime + start);
+      gain.gain.setValueAtTime(0.0001, ctx.currentTime + start);
+      gain.gain.exponentialRampToValueAtTime(volume, ctx.currentTime + start + .015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + start + duration);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(ctx.currentTime + start);
+      osc.stop(ctx.currentTime + start + duration + .02);
+    }
+
+    function noiseBurst(start, duration, volume = .04, frequency = 900) {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      const frameCount = Math.max(1, Math.floor(ctx.sampleRate * duration));
+      const buffer = ctx.createBuffer(1, frameCount, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < frameCount; i += 1) {
+        const fade = 1 - i / frameCount;
+        data[i] = (secureRandom() * 2 - 1) * fade;
+      }
+
+      const source = ctx.createBufferSource();
+      const filter = ctx.createBiquadFilter();
+      const gain = ctx.createGain();
+      source.buffer = buffer;
+      filter.type = "bandpass";
+      filter.frequency.value = frequency;
+      filter.Q.value = .8;
+      gain.gain.setValueAtTime(volume, ctx.currentTime + start);
+      gain.gain.exponentialRampToValueAtTime(.0001, ctx.currentTime + start + duration);
+      source.connect(filter).connect(gain).connect(ctx.destination);
+      source.start(ctx.currentTime + start);
+    }
+
+    function woodKnock(start, strength = 1) {
+      tone(145 * strength, start, .10, "triangle", .075);
+      tone(82 * strength, start + .012, .15, "sine", .055);
+      noiseBurst(start, .075, .045, 720 * strength);
+    }
+
+    function playThrowSound() {
+      // Simulate the wooden sounds of two jiaobei blocks flipping and colliding.
+      noiseBurst(0, .22, .035, 1250);
+      [0, .16, .33, .51, .70, .90, 1.11, 1.34, 1.56, 1.74].forEach((time, index) => {
+        woodKnock(time, .88 + (index % 3) * .09);
+      });
+      tone(210, .05, .28, "triangle", .025);
+      tone(270, .58, .24, "triangle", .022);
+      tone(330, 1.18, .20, "triangle", .018);
+    }
+
+    function playLandingSound() {
+      // Two heavier impacts create a more realistic landing sound.
+      woodKnock(0, .82);
+      woodKnock(.105, .68);
+      noiseBurst(0, .24, .055, 430);
+      tone(68, .025, .30, "sine", .07);
+    }
+
+    function playResultChime(isSheng) {
+      const notes = isSheng ? [523.25, 659.25, 783.99] : [392, 493.88];
+      notes.forEach((freq, i) => tone(freq, i * .14, .55, "sine", .045));
+    }
+
+    function playAnswerTone(isCorrect) {
+      const notes = isCorrect ? [523.25, 659.25] : [293.66, 261.63];
+      notes.forEach((freq, i) => tone(freq, i * .13, .35, "sine", .04));
+    }
+
+    function playRewardFanfare() {
+      [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => tone(freq, i * .11, .65, "sine", .045));
+    }
+
+    async function bootThreeScene() {
+      if (threeReady) return true;
+      if (threeBootPromise) return threeBootPromise;
+
+      threeBootPromise = (async () => {
+        try {
+          if (!THREE) {
+            THREE = await import("https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js");
+          }
+          initThreeScene();
+          return threeReady;
+        } catch (error) {
+          console.error("Unable to initialize the 3D jiaobei scene:", error);
+          threeLoading.textContent = "3D MODE UNAVAILABLE";
+          threeLoading.classList.remove("ready");
+          return false;
+        } finally {
+          if (!threeReady) threeBootPromise = null;
+        }
+      })();
+
+      return threeBootPromise;
+    }
+
+    // Console helper for troubleshooting on enterprise browsers.
+    window.getJiaobei3DStatus = () => {
+      const { width, height } = getThreeStageSize();
+      return {
+        stageWidth: width,
+        stageHeight: height,
+        canvasCssWidth: jiaobeiCanvas.clientWidth,
+        canvasCssHeight: jiaobeiCanvas.clientHeight,
+        canvasInternalWidth: jiaobeiCanvas.width,
+        canvasInternalHeight: jiaobeiCanvas.height,
+        threeReady,
+        rendererCreated: Boolean(renderer3D),
+        sceneCreated: Boolean(scene3D),
+        cameraCreated: Boolean(camera3D),
+        jiaobeiCount: jiaobeiObjects3D.length,
+        renderCalls: renderer3D?.info?.render?.calls ?? null,
+        contextLost: renderer3D?.getContext?.().isContextLost?.() ?? null
+      };
+    };
+
+    /* ==========================================================
+       Events
+       ========================================================== */
+    startBtn.addEventListener("click", castJiaobei);
+
+    resultActionBtn.addEventListener("click", () => {
+      if (OUTCOMES[currentOutcomeKey].action === "reward") openReward();
+      else openQuiz();
+    });
+
+    castAgainBtn.addEventListener("click", castJiaobei);
+
+    submitAnswerBtn.addEventListener("click", () => {
+      if (!answerSubmitted) submitAnswer();
+      else openReward();
+    });
+
+    claimAndReturnBtn.addEventListener("click", () => {
+      const nextUrl = APP_CONFIG.fortuneDrawUrl.trim();
+      if (nextUrl) {
+        window.location.href = nextUrl;
+        return;
+      }
+      closeRewardAndReset();
+    });
+
+    async function toggleFullscreen() {
+      try {
+        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+          const target = document.documentElement;
+          if (target.requestFullscreen) await target.requestFullscreen();
+          else if (target.webkitRequestFullscreen) target.webkitRequestFullscreen();
+        } else if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+      } catch (error) {
+        console.warn("Unable to toggle fullscreen:", error);
+      }
+    }
+
+    function syncFullscreenUI() {
+      const isFullscreen = Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+      document.body.classList.toggle("fullscreen-mode", isFullscreen);
+      fullscreenToggle.textContent = isFullscreen ? "×" : "⛶";
+      fullscreenToggle.setAttribute("aria-label", isFullscreen ? "Exit fullscreen" : "Enter fullscreen");
+      fullscreenToggle.title = isFullscreen ? "Exit fullscreen" : "Enter fullscreen";
+    }
+
+    fullscreenToggle.addEventListener("click", toggleFullscreen);
+    document.addEventListener("fullscreenchange", syncFullscreenUI);
+    document.addEventListener("webkitfullscreenchange", syncFullscreenUI);
+
+    soundToggle.addEventListener("click", () => {
+      APP_CONFIG.soundEnabled = !APP_CONFIG.soundEnabled;
+      soundToggle.textContent = APP_CONFIG.soundEnabled ? "♪" : "×";
+      soundToggle.setAttribute("aria-label", APP_CONFIG.soundEnabled ? "Mute sound" : "Enable sound");
+      if (APP_CONFIG.soundEnabled) tone(660, 0, .25, "sine", .04);
+    });
+
+    // Test mode: add ?debug=1 to the URL to force the next result.
+    if (new URLSearchParams(location.search).get("debug") === "1") {
+      debugPanel.classList.add("show");
+      debugPanel.querySelectorAll("button").forEach(button => {
+        button.addEventListener("click", () => {
+          forcedOutcome = button.dataset.force;
+          castJiaobei();
+        });
+      });
+    }
+  </script>
+</body>
+</html>
