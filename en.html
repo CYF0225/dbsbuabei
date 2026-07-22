@@ -295,24 +295,44 @@
 
     .mini-piece {
       position: absolute;
-      width: 112px;
-      height: 64px;
-      border-radius: 100% 15% 100% 22% / 100% 25% 100% 35%;
-      background: linear-gradient(145deg, #e72b3f, #9b1021 68%, #6d0916);
-      box-shadow: 0 18px 28px rgba(78, 7, 18, .25), inset 8px 8px 10px rgba(255,255,255,.16);
+      width: 126px;
+      height: 72px;
+      border-radius: 68% 72% 14% 12% / 92% 90% 18% 18%;
+      background:
+        linear-gradient(118deg, rgba(255,255,255,.10), transparent 24%),
+        repeating-linear-gradient(9deg, rgba(255,229,206,.09) 0 1px, rgba(122,48,34,.04) 1px 4px, transparent 4px 10px),
+        linear-gradient(155deg, #c4473f 0%, #98302d 44%, #621d1a 100%);
+      box-shadow:
+        0 20px 30px rgba(78, 7, 18, .28),
+        inset 6px 6px 9px rgba(255,255,255,.08),
+        inset -11px -11px 15px rgba(57,16,11,.28);
+      transform-origin: center;
+    }
+
+    .mini-piece::before {
+      content: "";
+      position: absolute;
+      left: 17%;
+      top: 10%;
+      width: 56%;
+      height: 22%;
+      border-radius: 50%;
+      background: linear-gradient(90deg, rgba(255,255,255,.08), rgba(255,255,255,.01));
+      filter: blur(2px);
+      transform: rotate(-8deg);
     }
 
     .mini-piece::after {
       content: "";
       position: absolute;
-      inset: 9px 15px 14px 13px;
+      inset: 7px 9px 8px;
       border-radius: inherit;
-      border: 2px solid rgba(255,229,174,.72);
-      opacity: .7;
+      border: 1.4px solid rgba(201,146,78,.45);
+      opacity: .68;
     }
 
-    .mini-piece.one { left: 20px; top: 42px; transform: rotate(25deg); }
-    .mini-piece.two { right: 10px; bottom: 23px; transform: rotate(154deg) scaleX(-1); }
+    .mini-piece.one { left: 10px; top: 39px; transform: rotate(31deg); }
+    .mini-piece.two { right: 5px; bottom: 25px; transform: rotate(151deg) scaleX(-1); }
 
     .primary-btn,
     .secondary-btn {
@@ -547,38 +567,51 @@
     .result-mini {
       position: absolute;
       top: 36px;
-      width: 130px;
-      height: 76px;
-      border-radius: 100% 15% 100% 22% / 100% 25% 100% 35%;
-      background: linear-gradient(145deg, #e72b3f, #9b1021 68%, #6d0916);
-      box-shadow: 0 18px 24px rgba(78,7,18,.24), inset 8px 8px 10px rgba(255,255,255,.16);
+      width: 138px;
+      height: 78px;
+      overflow: hidden;
+      border-radius: 68% 72% 14% 12% / 92% 90% 18% 18%;
+      background:
+        linear-gradient(118deg, rgba(255,255,255,.10), transparent 24%),
+        repeating-linear-gradient(9deg, rgba(255,229,206,.09) 0 1px, rgba(118,40,28,.04) 1px 4px, transparent 4px 10px),
+        linear-gradient(155deg, #c2443d 0%, #962e2b 44%, #601b18 100%);
+      box-shadow:
+        0 19px 27px rgba(78,7,18,.27),
+        inset 6px 6px 9px rgba(255,255,255,.08),
+        inset -10px -10px 14px rgba(56,15,10,.26);
       transition: all .4s ease;
     }
 
     .result-mini::after {
       content: "";
       position: absolute;
-      inset: 10px 17px 15px 14px;
+      inset: 8px 10px 9px;
+      z-index: 2;
       border-radius: inherit;
-      border: 2px solid rgba(255,229,174,.72);
+      border: 1.5px solid rgba(194,141,76,.45);
     }
 
     .result-mini.flat::before {
       content: "";
       position: absolute;
-      inset: 7px 10px 9px;
-      z-index: 0;
+      inset: 5px 7px 7px;
+      z-index: 1;
       border-radius: inherit;
-      background: linear-gradient(145deg, #ffe2aa, #be7735 62%, #873d20);
-      box-shadow: inset 3px 3px 7px rgba(255,255,255,.35);
+      background:
+        linear-gradient(110deg, rgba(255,255,255,.10), transparent 28%),
+        repeating-linear-gradient(5deg, rgba(255,223,201,.18) 0 1px, rgba(118,40,28,.05) 1px 4px, transparent 4px 9px),
+        linear-gradient(145deg, #ca5a4e 0%, #9b3831 50%, #6c221d 100%);
+      box-shadow:
+        inset 2px 2px 5px rgba(255,255,255,.12),
+        inset -5px -5px 9px rgba(74,18,14,.20);
     }
 
-    .result-mini.flat::after { border-color: rgba(103,43,20,.48); }
-    .result-mini.a { left: 4px; transform: rotate(24deg); }
-    .result-mini.b { right: 4px; transform: rotate(154deg) scaleX(-1); }
-    .result-mini.upright { width: 42px; height: 132px; top: 8px; border-radius: 22px 12px 22px 10px; }
-    .result-mini.upright.a { left: 78px; transform: rotate(-5deg); }
-    .result-mini.upright.b { right: 78px; transform: rotate(5deg); }
+    .result-mini.flat::after { border-color: rgba(187,133,69,.42); }
+    .result-mini.a { left: 0; transform: rotate(27deg); }
+    .result-mini.b { right: 0; transform: rotate(153deg) scaleX(-1); }
+    .result-mini.upright { width: 44px; height: 134px; top: 7px; border-radius: 55% 45% 18% 16% / 13% 13% 35% 35%; }
+    .result-mini.upright.a { left: 76px; transform: rotate(-4deg); }
+    .result-mini.upright.b { right: 76px; transform: rotate(4deg); }
 
     .result-desc {
       max-width: 420px;
@@ -886,6 +919,129 @@
         transition-duration: .01ms !important;
       }
     }
+
+    /* Three.js realistic casting stage — visual upgrade only */
+    .stage.three-stage {
+      position: relative;
+      width: 100%;
+      height: 360px;
+      margin-top: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(217, 164, 65, .22);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(255, 222, 169, .26), transparent 33%),
+        radial-gradient(ellipse at 50% 85%, rgba(217, 164, 65, .12), transparent 50%),
+        linear-gradient(180deg, rgba(62, 7, 18, .92), rgba(34, 5, 11, .96));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.11),
+        inset 0 -32px 70px rgba(10, 0, 3, .34),
+        0 16px 34px rgba(62, 7, 18, .17);
+      isolation: isolate;
+    }
+
+    .stage.three-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.24), transparent 18% 82%, rgba(0,0,0,.24)),
+        radial-gradient(circle at 50% 48%, transparent 45%, rgba(12, 0, 3, .32) 100%);
+    }
+
+    .stage.three-stage::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      z-index: 2;
+      width: 78%;
+      height: 1px;
+      pointer-events: none;
+      background: linear-gradient(90deg, transparent, rgba(245,217,140,.45), transparent);
+      transform: translateX(-50%);
+      box-shadow: 0 0 24px rgba(245,217,140,.18);
+    }
+
+    #jiaobeiCanvas {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: block;
+      outline: none;
+      touch-action: none;
+    }
+
+    .three-temple-glow {
+      position: absolute;
+      left: 50%;
+      top: -28px;
+      z-index: 0;
+      width: 260px;
+      height: 180px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(255,221,162,.24), rgba(227,24,55,.07) 48%, transparent 72%);
+      filter: blur(12px);
+      transform: translateX(-50%);
+    }
+
+    .three-incense-smoke {
+      position: absolute;
+      left: 50%;
+      top: 24px;
+      z-index: 3;
+      width: 70px;
+      height: 110px;
+      pointer-events: none;
+      opacity: .42;
+      filter: blur(5px);
+      background:
+        radial-gradient(ellipse at 44% 75%, rgba(255,244,226,.25), transparent 30%),
+        radial-gradient(ellipse at 58% 48%, rgba(255,244,226,.18), transparent 28%),
+        radial-gradient(ellipse at 42% 22%, rgba(255,244,226,.12), transparent 24%);
+      animation: threeSmoke 3.4s ease-in-out infinite;
+      transform: translateX(-50%);
+    }
+
+    @keyframes threeSmoke {
+      0% { transform: translateX(-50%) translateY(16px) scale(.74); opacity: 0; }
+      32% { opacity: .42; }
+      100% { transform: translateX(-42%) translateY(-26px) scale(1.28); opacity: 0; }
+    }
+
+    .three-loading {
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      z-index: 4;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: rgba(255,248,235,.72);
+      background: rgba(20,2,6,.34);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      pointer-events: none;
+      transform: translateX(-50%);
+      transition: opacity .3s ease;
+    }
+
+    .three-loading.ready { opacity: 0; }
+
+    @media (max-width: 520px) {
+      .stage.three-stage {
+        height: 330px;
+        margin-top: -4px;
+        transform: none;
+        border-radius: 20px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -929,46 +1085,11 @@
         <h2 class="casting-title">Casting…</h2>
         <p class="casting-copy" id="castingCopy">Waiting for the blocks to settle</p>
 
-        <div class="stage" aria-label="Jiaobei casting animation">
-          <div class="incense-smoke"></div>
-          <div class="stage-floor"></div>
-          <div class="pieces" id="pieces">
-            <div class="piece one face-convex" id="pieceOne">
-              <svg viewBox="0 0 180 105" role="img" aria-label="Jiaobei block one">
-                <defs>
-                  <linearGradient id="woodGradientA" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#ef4051"/><stop offset=".52" stop-color="#b3142a"/><stop offset="1" stop-color="#6f0817"/>
-                  </linearGradient>
-                  <linearGradient id="flatGradient" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#ffe7b6"/><stop offset=".55" stop-color="#c77a35"/><stop offset="1" stop-color="#7a301b"/>
-                  </linearGradient>
-                  <linearGradient id="convexGradient" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#f34858"/><stop offset=".6" stop-color="#a90f24"/><stop offset="1" stop-color="#650512"/>
-                  </linearGradient>
-                </defs>
-                <path class="shell" d="M13,80 C12,35 47,10 89,12 C132,14 165,38 167,78 C136,97 52,102 13,80Z"/>
-                <path class="flat-surface" d="M24,75 C25,42 52,24 88,24 C124,24 151,43 155,72 C126,85 57,89 24,75Z"/>
-                <path class="convex-surface" d="M22,76 C20,42 50,19 89,20 C128,20 158,43 157,75 C123,94 55,94 22,76Z"/>
-                <path class="rim" d="M22,76 C20,42 50,19 89,20 C128,20 158,43 157,75"/>
-                <ellipse class="shine" cx="64" cy="38" rx="32" ry="10" transform="rotate(-12 64 38)"/>
-              </svg>
-            </div>
-
-            <div class="piece two face-convex" id="pieceTwo">
-              <svg viewBox="0 0 180 105" role="img" aria-label="Jiaobei block two">
-                <defs>
-                  <linearGradient id="woodGradientB" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#f04a59"/><stop offset=".5" stop-color="#b9152b"/><stop offset="1" stop-color="#680713"/>
-                  </linearGradient>
-                </defs>
-                <path class="shell" d="M13,80 C12,35 47,10 89,12 C132,14 165,38 167,78 C136,97 52,102 13,80Z"/>
-                <path class="flat-surface" d="M24,75 C25,42 52,24 88,24 C124,24 151,43 155,72 C126,85 57,89 24,75Z"/>
-                <path class="convex-surface" d="M22,76 C20,42 50,19 89,20 C128,20 158,43 157,75 C123,94 55,94 22,76Z"/>
-                <path class="rim" d="M22,76 C20,42 50,19 89,20 C128,20 158,43 157,75"/>
-                <ellipse class="shine" cx="64" cy="38" rx="32" ry="10" transform="rotate(-12 64 38)"/>
-              </svg>
-            </div>
-          </div>
+        <div class="stage three-stage" id="threeStage" aria-label="Realistic 3D jiaobei casting animation">
+          <div class="three-temple-glow" aria-hidden="true"></div>
+          <canvas id="jiaobeiCanvas" aria-hidden="true"></canvas>
+          <div class="three-incense-smoke" aria-hidden="true"></div>
+          <div class="three-loading" id="threeLoading">PREPARING 3D JIAOBEI</div>
         </div>
 
         <div class="casting-progress" aria-hidden="true"></div>
@@ -1042,6 +1163,8 @@
   </div>
 
   <script>
+    let THREE = null;
+
     /* ==========================================================
        Frequently edited settings
        ========================================================== */
@@ -1051,7 +1174,7 @@
       // Enter the fortune-draw page URL here, for example: "fortune-draw.html"
       // If left blank, the button returns to the jiaobei home screen.
       fortuneDrawUrl: "",
-      castingDurationMs: 2450,
+      castingDurationMs: 2680,
       soundEnabled: true
     };
 
@@ -1154,9 +1277,9 @@
     };
 
     const startBtn = document.getElementById("startBtn");
-    const pieces = document.getElementById("pieces");
-    const pieceOne = document.getElementById("pieceOne");
-    const pieceTwo = document.getElementById("pieceTwo");
+    const threeStage = document.getElementById("threeStage");
+    const jiaobeiCanvas = document.getElementById("jiaobeiCanvas");
+    const threeLoading = document.getElementById("threeLoading");
     const castingCopy = document.getElementById("castingCopy");
     const resultSeal = document.getElementById("resultSeal");
     const resultName = document.getElementById("resultName");
@@ -1188,6 +1311,16 @@
     let answerSubmitted = false;
     let forcedOutcome = null;
     let audioContext = null;
+
+    // Three.js state
+    let renderer3D = null;
+    let scene3D = null;
+    let camera3D = null;
+    let floor3D = null;
+    let castAnimation3D = null;
+    let threeReady = false;
+    let resizeObserver3D = null;
+    const jiaobeiObjects3D = [];
 
     function showScreen(name) {
       Object.values(screens).forEach(screen => screen.classList.remove("active"));
@@ -1225,14 +1358,707 @@
       return "li";
     }
 
-    function resetPieceClasses() {
-      [pieceOne, pieceTwo].forEach(piece => {
-        piece.classList.remove("face-flat", "face-convex");
-        piece.classList.add("face-convex");
-        piece.style.removeProperty("--rx");
-        piece.style.removeProperty("--ry");
-        piece.style.removeProperty("--rz");
+
+    /* ==========================================================
+       Realistic Three.js jiaobei scene
+       ========================================================== */
+    function clamp01(value) {
+      return Math.min(1, Math.max(0, value));
+    }
+
+    function easeOutCubic(value) {
+      return 1 - Math.pow(1 - value, 3);
+    }
+
+    function easeInOutCubic(value) {
+      return value < .5
+        ? 4 * value * value * value
+        : 1 - Math.pow(-2 * value + 2, 3) / 2;
+    }
+
+    /* A+B realistic jiaobei upgrade: true half-moon silhouette, flat face, convex back, wood grain. */
+    function createJiaobeiShape(scale = 1) {
+      const shape = new THREE.Shape();
+
+      // A more temple-authentic crescent silhouette: pointed ends, a fuller outer arc,
+      // and a shallower inner arc so the body reads like a real jiaobei instead of a thick slab.
+      shape.moveTo(-1.74 * scale, -.05 * scale);
+      shape.bezierCurveTo(-1.61 * scale, -.70 * scale, -.92 * scale, -1.12 * scale, -.02 * scale, -1.10 * scale);
+      shape.bezierCurveTo(.90 * scale, -1.08 * scale, 1.54 * scale, -.66 * scale, 1.70 * scale, -.16 * scale);
+      shape.bezierCurveTo(1.77 * scale, .10 * scale, 1.58 * scale, .33 * scale, 1.20 * scale, .39 * scale);
+      shape.bezierCurveTo(.57 * scale, .47 * scale, -.10 * scale, .62 * scale, -.86 * scale, .76 * scale);
+      shape.bezierCurveTo(-1.35 * scale, .84 * scale, -1.66 * scale, .56 * scale, -1.72 * scale, .18 * scale);
+      shape.bezierCurveTo(-1.75 * scale, .07 * scale, -1.76 * scale, .00 * scale, -1.74 * scale, -.05 * scale);
+      shape.closePath();
+      return shape;
+    }
+
+    function createConvexCapGeometry() {
+      const outline = createJiaobeiShape(1).getSpacedPoints(104);
+      if (outline.length > 1 && outline[0].distanceTo(outline[outline.length - 1]) < .001) {
+        outline.pop();
+      }
+
+      // A smoother convex back that grows out of the body with a more rounded side profile.
+      const ridgeX = .03;
+      const ridgeY = -.18;
+      const ringScales = [1.00, .96, .89, .79, .66, .50, .32, .14];
+      const ringDepths = [.285, .345, .430, .535, .655, .760, .835, .885];
+      const positions = [];
+      const uvs = [];
+      const indices = [];
+      const ringCount = ringScales.length;
+      const pointCount = outline.length;
+
+      for (let ring = 0; ring < ringCount; ring += 1) {
+        const ringScale = ringScales[ring];
+        const liftBias = ring / (ringCount - 1);
+        for (let i = 0; i < pointCount; i += 1) {
+          const point = outline[i];
+          const x = ridgeX + (point.x - ridgeX) * ringScale + liftBias * .015;
+          const y = ridgeY + (point.y - ridgeY) * ringScale - liftBias * .010;
+          const z = ringDepths[ring];
+          positions.push(x, y, z);
+          uvs.push((x + 1.90) / 3.80, (y + 1.28) / 2.10);
+        }
+      }
+
+      positions.push(ridgeX + .02, ridgeY - .01, .905);
+      uvs.push((ridgeX + 1.90) / 3.80, (ridgeY + 1.28) / 2.10);
+      const centerIndex = positions.length / 3 - 1;
+
+      for (let ring = 0; ring < ringCount - 1; ring += 1) {
+        for (let i = 0; i < pointCount; i += 1) {
+          const next = (i + 1) % pointCount;
+          const a = ring * pointCount + i;
+          const b = ring * pointCount + next;
+          const c = (ring + 1) * pointCount + next;
+          const d = (ring + 1) * pointCount + i;
+          indices.push(a, b, d, b, c, d);
+        }
+      }
+
+      const lastRingStart = (ringCount - 1) * pointCount;
+      for (let i = 0; i < pointCount; i += 1) {
+        const next = (i + 1) % pointCount;
+        indices.push(lastRingStart + i, lastRingStart + next, centerIndex);
+      }
+
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+      geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2));
+      geometry.setIndex(indices);
+      geometry.computeVertexNormals();
+      geometry.computeBoundingSphere();
+      return geometry;
+    }
+
+    function createRimTube(scale, zPosition, radius = .026) {
+      const points2D = createJiaobeiShape(scale).getSpacedPoints(112);
+      if (points2D.length > 1 && points2D[0].distanceTo(points2D[points2D.length - 1]) < .001) {
+        points2D.pop();
+      }
+      const points3D = points2D.map(point => new THREE.Vector3(point.x, point.y, zPosition));
+      const curve = new THREE.CatmullRomCurve3(points3D, true, "centripetal");
+      return new THREE.TubeGeometry(curve, 180, radius, 8, true);
+    }
+    function sculptJiaobeiBodyGeometry(geometry) {
+      const position = geometry.attributes.position;
+      const backZ = -.31;
+      const frontZ = .31;
+
+      for (let i = 0; i < position.count; i += 1) {
+        let x = position.getX(i);
+        let y = position.getY(i);
+        let z = position.getZ(i);
+
+        const depthT = THREE.MathUtils.clamp((z - backZ) / (frontZ - backZ), 0, 1);
+        const radial = Math.min(1, Math.hypot(x / 1.78, y / 1.22));
+        const sideRound = Math.sin(depthT * Math.PI);
+        const bodySwell = Math.pow(sideRound, .92);
+        const edgeWeight = Math.pow(radial, 1.45);
+
+        // Make the section swell into a rounded side wall instead of reading as a flat slab.
+        const xScale = .82 + bodySwell * (.18 + edgeWeight * .05) + depthT * .015;
+        const yScale = .88 + bodySwell * (.12 + edgeWeight * .04) + depthT * .01;
+        x *= xScale;
+        y *= yScale;
+
+        // Keep one side genuinely flat, then quickly roll outward into the rounded body.
+        if (depthT < .14) {
+          const local = depthT / .14;
+          z = THREE.MathUtils.lerp(backZ + radial * .004, z + edgeWeight * .02, local * local);
+        } else {
+          const rolled = Math.sin((depthT - .14) / .86 * Math.PI * .5);
+          z += rolled * (.060 + edgeWeight * .090) - (1 - depthT) * edgeWeight * .015;
+        }
+
+        position.setXYZ(i, x, y, z);
+      }
+
+      position.needsUpdate = true;
+      geometry.computeVertexNormals();
+      geometry.computeBoundingSphere();
+      return geometry;
+    }
+
+
+    function makeJiaobeiWoodTexture(index = 0, flat = false) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 768;
+      canvas.height = 512;
+      const ctx = canvas.getContext("2d");
+
+      const gradient = ctx.createLinearGradient(40, 20, 730, 500);
+      if (flat) {
+        gradient.addColorStop(0, index === 0 ? "#c95a49" : "#cf6251");
+        gradient.addColorStop(.48, index === 0 ? "#93372a" : "#9b3d2f");
+        gradient.addColorStop(1, "#5f211b");
+      } else {
+        gradient.addColorStop(0, index === 0 ? "#b53c34" : "#bb433b");
+        gradient.addColorStop(.48, index === 0 ? "#7f261f" : "#872d25");
+        gradient.addColorStop(1, "#4d1713");
+      }
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Long, slightly irregular wood fibres that remain visible under the lacquer.
+      const fibreCount = flat ? 152 : 132;
+      for (let i = 0; i < fibreCount; i += 1) {
+        const y = (i / fibreCount) * canvas.height + (secureRandom() - .5) * 9;
+        const alpha = (flat ? .075 : .055) + secureRandom() * (flat ? .11 : .085);
+        ctx.strokeStyle = `rgba(255, 206, 172, ${alpha})`;
+        ctx.lineWidth = .45 + secureRandom() * 1.35;
+        ctx.beginPath();
+        ctx.moveTo(-20, y);
+        ctx.bezierCurveTo(
+          170, y - 12 + secureRandom() * 24,
+          520, y + 13 - secureRandom() * 26,
+          790, y - 4 + secureRandom() * 8
+        );
+        ctx.stroke();
+      }
+
+      for (let i = 0; i < 42; i += 1) {
+        const y = secureRandom() * canvas.height;
+        ctx.strokeStyle = `rgba(82, 31, 20, ${.045 + secureRandom() * .075})`;
+        ctx.lineWidth = .6 + secureRandom() * 1.4;
+        ctx.beginPath();
+        ctx.moveTo(-10, y);
+        ctx.bezierCurveTo(220, y + 16, 510, y - 18, 790, y + 5);
+        ctx.stroke();
+      }
+
+      // Dry-brush streaks and a few subtle knots stop the surface from looking procedurally perfect.
+      for (let i = 0; i < 22; i += 1) {
+        const x = -40 + secureRandom() * 860;
+        const y = secureRandom() * canvas.height;
+        ctx.strokeStyle = `rgba(255, 229, 208, ${flat ? .035 : .024})`;
+        ctx.lineWidth = .5 + secureRandom() * 1.2;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + 120 + secureRandom() * 180, y + (secureRandom() - .5) * 18);
+        ctx.stroke();
+      }
+
+      for (let i = 0; i < 9; i += 1) {
+        const x = 80 + secureRandom() * 610;
+        const y = 55 + secureRandom() * 400;
+        const radius = 10 + secureRandom() * 22;
+        const knot = ctx.createRadialGradient(x, y, 1, x, y, radius);
+        knot.addColorStop(0, "rgba(67,28,18,.18)");
+        knot.addColorStop(.48, "rgba(236,182,147,.06)");
+        knot.addColorStop(1, "rgba(67,28,18,0)");
+        ctx.fillStyle = knot;
+        ctx.beginPath();
+        ctx.ellipse(x, y, radius * 1.8, radius * .62, -.12, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.wrapS = THREE.ClampToEdgeWrapping;
+      texture.wrapT = THREE.ClampToEdgeWrapping;
+      texture.anisotropy = 8;
+      return texture;
+    }
+
+    function makeJiaobeiBumpTexture(flat = false) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 512;
+      canvas.height = 512;
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = flat ? "#898989" : "#7a7a7a";
+      ctx.fillRect(0, 0, 512, 512);
+
+      const lines = flat ? 210 : 178;
+      for (let i = 0; i < lines; i += 1) {
+        const y = (i / lines) * 512 + (secureRandom() - .5) * 8;
+        const value = 95 + Math.floor(secureRandom() * 88);
+        ctx.strokeStyle = `rgb(${value},${value},${value})`;
+        ctx.lineWidth = .6 + secureRandom() * 1.5;
+        ctx.beginPath();
+        ctx.moveTo(-10, y);
+        ctx.bezierCurveTo(145, y - 11, 360, y + 12, 522, y - 3);
+        ctx.stroke();
+      }
+
+      for (let i = 0; i < 26; i += 1) {
+        const x = secureRandom() * 512;
+        const y = secureRandom() * 512;
+        const r = 2 + secureRandom() * 5;
+        ctx.fillStyle = `rgba(${80 + Math.floor(secureRandom() * 45)}, ${80 + Math.floor(secureRandom() * 45)}, ${80 + Math.floor(secureRandom() * 45)}, .28)`;
+        ctx.beginPath();
+        ctx.ellipse(x, y, r * 1.8, r * .5, secureRandom() * Math.PI, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.wrapS = THREE.ClampToEdgeWrapping;
+      texture.wrapT = THREE.ClampToEdgeWrapping;
+      texture.anisotropy = 4;
+      return texture;
+    }
+
+    function makeTableTexture() {
+      const canvas = document.createElement("canvas");
+      canvas.width = 1024;
+      canvas.height = 1024;
+      const ctx = canvas.getContext("2d");
+
+      const base = ctx.createLinearGradient(0, 0, 1024, 1024);
+      base.addColorStop(0, "#5b2b20");
+      base.addColorStop(.46, "#3c1714");
+      base.addColorStop(1, "#210809");
+      ctx.fillStyle = base;
+      ctx.fillRect(0, 0, 1024, 1024);
+
+      // Broad timber bands.
+      for (let band = 0; band < 16; band += 1) {
+        const y = band * 64 + (secureRandom() - .5) * 10;
+        ctx.fillStyle = `rgba(238, 170, 104, ${.012 + secureRandom() * .025})`;
+        ctx.fillRect(0, y, 1024, 30 + secureRandom() * 42);
+      }
+
+      // Fine grain.
+      for (let i = 0; i < 210; i += 1) {
+        const y = (i / 210) * 1024 + (secureRandom() - .5) * 10;
+        ctx.strokeStyle = `rgba(242, 184, 113, ${.018 + secureRandom() * .042})`;
+        ctx.lineWidth = .45 + secureRandom() * 1.25;
+        ctx.beginPath();
+        ctx.moveTo(-20, y);
+        ctx.bezierCurveTo(260, y - 15 + secureRandom() * 30, 690, y + 16 - secureRandom() * 32, 1044, y);
+        ctx.stroke();
+      }
+
+      // Dark pores and knots.
+      for (let i = 0; i < 12; i += 1) {
+        const x = secureRandom() * 1024;
+        const y = secureRandom() * 1024;
+        const r = 18 + secureRandom() * 48;
+        const knot = ctx.createRadialGradient(x, y, 2, x, y, r);
+        knot.addColorStop(0, "rgba(18,1,3,.32)");
+        knot.addColorStop(.35, "rgba(113,53,35,.18)");
+        knot.addColorStop(1, "rgba(18,1,3,0)");
+        ctx.fillStyle = knot;
+        ctx.beginPath();
+        ctx.ellipse(x, y, r * 1.7, r * .52, -.08, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      texture.repeat.set(1.55, 1.10);
+      texture.anisotropy = 8;
+      return texture;
+    }
+
+    function makeSoftShadowTexture() {
+      const canvas = document.createElement("canvas");
+      canvas.width = 256;
+      canvas.height = 256;
+      const ctx = canvas.getContext("2d");
+      const gradient = ctx.createRadialGradient(128, 128, 6, 128, 128, 122);
+      gradient.addColorStop(0, "rgba(5,0,2,.68)");
+      gradient.addColorStop(.35, "rgba(5,0,2,.40)");
+      gradient.addColorStop(.72, "rgba(5,0,2,.12)");
+      gradient.addColorStop(1, "rgba(5,0,2,0)");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 256, 256);
+      return new THREE.CanvasTexture(canvas);
+    }
+
+    function createJiaobeiModel(index) {
+      const group = new THREE.Group();
+      group.rotation.order = "XYZ";
+
+      const bodyTexture = makeJiaobeiWoodTexture(index, false);
+      const flatTexture = makeJiaobeiWoodTexture(index, true);
+      const bodyBump = makeJiaobeiBumpTexture(false);
+      const flatBump = makeJiaobeiBumpTexture(true);
+
+      const lacquerMaterial = new THREE.MeshPhysicalMaterial({
+        color: index === 0 ? 0x9a352c : 0xa33d34,
+        map: bodyTexture,
+        bumpMap: bodyBump,
+        bumpScale: .046,
+        roughness: .68,
+        metalness: .003,
+        clearcoat: .16,
+        clearcoatRoughness: .62,
+        sheen: .05,
+        sheenColor: new THREE.Color(0x592119),
+        side: THREE.DoubleSide
       });
+
+      const convexMaterial = new THREE.MeshPhysicalMaterial({
+        color: index === 0 ? 0xa93f35 : 0xb3473d,
+        map: bodyTexture,
+        bumpMap: bodyBump,
+        bumpScale: .042,
+        roughness: .60,
+        metalness: .003,
+        clearcoat: .20,
+        clearcoatRoughness: .52,
+        sheen: .06,
+        sheenColor: new THREE.Color(0x61251b),
+        side: THREE.DoubleSide
+      });
+
+      const flatMaterial = new THREE.MeshPhysicalMaterial({
+        color: index === 0 ? 0xb8604e : 0xc16a56,
+        map: flatTexture,
+        bumpMap: flatBump,
+        bumpScale: .072,
+        roughness: .78,
+        metalness: .002,
+        clearcoat: .06,
+        clearcoatRoughness: .80,
+        side: THREE.DoubleSide
+      });
+
+      const goldMaterial = new THREE.MeshStandardMaterial({
+        color: 0xb88a47,
+        roughness: .62,
+        metalness: .18,
+        emissive: 0x221102,
+        emissiveIntensity: .03
+      });
+
+      const bodyGeometry = new THREE.ExtrudeGeometry(createJiaobeiShape(1), {
+        depth: .56,
+        bevelEnabled: true,
+        bevelSegments: 9,
+        steps: 1,
+        bevelSize: .10,
+        bevelThickness: .10,
+        curveSegments: 72
+      });
+      bodyGeometry.translate(0, 0, -.28);
+      sculptJiaobeiBodyGeometry(bodyGeometry);
+      bodyGeometry.computeVertexNormals();
+
+      const body = new THREE.Mesh(bodyGeometry, lacquerMaterial);
+      group.add(body);
+
+      const convexCap = new THREE.Mesh(createConvexCapGeometry(), convexMaterial);
+      group.add(convexCap);
+
+      const flatFace = new THREE.Mesh(new THREE.ShapeGeometry(createJiaobeiShape(.885), 72), flatMaterial);
+      flatFace.position.z = -.390;
+      flatFace.rotation.y = Math.PI;
+      group.add(flatFace);
+
+      // Keep the requested premium gold edge, but reduce it so the form still reads as real wood.
+      const outerGoldFront = new THREE.Mesh(createRimTube(1.004, .318, .021), goldMaterial);
+      const outerGoldBack = new THREE.Mesh(createRimTube(1.004, -.302, .020), goldMaterial);
+      const innerGoldBack = new THREE.Mesh(createRimTube(.885, -.392, .014), goldMaterial);
+      [outerGoldFront, outerGoldBack, innerGoldBack].forEach(mesh => group.add(mesh));
+
+      const highlight = new THREE.Mesh(
+        new THREE.SphereGeometry(.50, 40, 20, 0, Math.PI * 2, 0, Math.PI / 2),
+        new THREE.MeshBasicMaterial({
+          color: 0xffffff,
+          transparent: true,
+          opacity: .008,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false
+        })
+      );
+      highlight.scale.set(1.75, .76, .13);
+      highlight.position.set(-.36, -.04, .79);
+      highlight.rotation.z = -.12;
+      group.add(highlight);
+
+      group.scale.setScalar(.68);
+
+      const shadow = new THREE.Mesh(
+        new THREE.PlaneGeometry(2.8, 2.8),
+        new THREE.MeshBasicMaterial({
+          map: makeSoftShadowTexture(),
+          transparent: true,
+          opacity: .22,
+          depthWrite: false,
+          color: 0x120205,
+          blending: THREE.NormalBlending
+        })
+      );
+      shadow.rotation.x = -Math.PI / 2;
+      shadow.scale.set(1.20, .58, 1);
+      shadow.position.y = -1.314;
+      shadow.renderOrder = 2;
+      scene3D.add(shadow);
+
+      group.traverse(object => {
+        if (object.isMesh) {
+          object.castShadow = true;
+          object.receiveShadow = true;
+        }
+      });
+
+      scene3D.add(group);
+      return { group, shadow };
+    }
+
+    function addTempleLighting() {
+      scene3D.add(new THREE.HemisphereLight(0xffdcc2, 0x160207, 1.28));
+
+      const key = new THREE.SpotLight(0xffd5a3, 74, 19, Math.PI / 4.8, .68, 1.22);
+      key.position.set(-2.8, 5.7, 4.7);
+      key.target.position.set(0, -.42, 0);
+      key.castShadow = true;
+      key.shadow.mapSize.set(2048, 2048);
+      key.shadow.bias = -.00012;
+      key.shadow.camera.near = .6;
+      key.shadow.camera.far = 18;
+      scene3D.add(key, key.target);
+
+      const fill = new THREE.PointLight(0xe31837, 12, 10, 1.8);
+      fill.position.set(3.3, 1.3, 2.4);
+      scene3D.add(fill);
+
+      const rim = new THREE.DirectionalLight(0xffe9bf, 2.25);
+      rim.position.set(1.7, 3.5, -3.7);
+      scene3D.add(rim);
+
+      const altarGlow = new THREE.PointLight(0xd9a441, 7.5, 8, 1.9);
+      altarGlow.position.set(0, -.65, 2.25);
+      scene3D.add(altarGlow);
+    }
+
+    function initThreeScene() {
+      renderer3D = new THREE.WebGLRenderer({
+        canvas: jiaobeiCanvas,
+        antialias: true,
+        alpha: true,
+        powerPreference: "high-performance"
+      });
+      renderer3D.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer3D.shadowMap.enabled = true;
+      renderer3D.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer3D.outputColorSpace = THREE.SRGBColorSpace;
+      renderer3D.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer3D.toneMappingExposure = 1.12;
+
+      scene3D = new THREE.Scene();
+      camera3D = new THREE.PerspectiveCamera(32, 1, .1, 100);
+      camera3D.position.set(0, 2.72, 8.55);
+      camera3D.lookAt(0, -.30, 0);
+
+      addTempleLighting();
+
+      const tableTexture = makeTableTexture();
+      floor3D = new THREE.Mesh(
+        new THREE.PlaneGeometry(11, 7),
+        new THREE.MeshPhysicalMaterial({
+          map: tableTexture,
+          bumpMap: tableTexture,
+          bumpScale: .022,
+          color: 0x6a3326,
+          roughness: .57,
+          metalness: .01,
+          clearcoat: .27,
+          clearcoatRoughness: .39
+        })
+      );
+      floor3D.rotation.x = -Math.PI / 2;
+      floor3D.position.y = -1.33;
+      floor3D.receiveShadow = true;
+      scene3D.add(floor3D);
+
+      const altarRing = new THREE.Mesh(
+        new THREE.RingGeometry(1.55, 1.59, 96),
+        new THREE.MeshBasicMaterial({
+          color: 0xd9a441,
+          transparent: true,
+          opacity: .28,
+          side: THREE.DoubleSide,
+          depthWrite: false
+        })
+      );
+      altarRing.rotation.x = -Math.PI / 2;
+      altarRing.scale.y = .58;
+      altarRing.position.set(0, -1.318, -.15);
+      scene3D.add(altarRing);
+
+      jiaobeiObjects3D.push(createJiaobeiModel(0), createJiaobeiModel(1));
+
+      resizeThreeScene();
+      if (window.ResizeObserver) {
+        resizeObserver3D = new ResizeObserver(resizeThreeScene);
+        resizeObserver3D.observe(threeStage);
+      } else {
+        window.addEventListener("resize", resizeThreeScene);
+      }
+
+      threeReady = true;
+      threeLoading.classList.add("ready");
+      resetThreeScene();
+      renderThreeScene();
+    }
+
+    function resizeThreeScene() {
+      if (!renderer3D || !camera3D) return;
+      const width = Math.max(1, threeStage.clientWidth);
+      const height = Math.max(1, threeStage.clientHeight);
+      renderer3D.setSize(width, height, false);
+      camera3D.aspect = width / height;
+      camera3D.updateProjectionMatrix();
+    }
+
+    function getFinalPose(key, index) {
+      const positions = {
+        // rx +90° = flat carved face upward; rx -90° = convex lacquered back upward.
+        sheng: [
+          { x: -1.05, y: -.75, z: -.11, rx: Math.PI / 2, ry: .035, rz: -.25 },
+          { x: 1.03, y: -1.05, z: .10, rx: -Math.PI / 2, ry: -.045, rz: .28 }
+        ],
+        xiao: [
+          { x: -1.04, y: -.75, z: -.10, rx: Math.PI / 2, ry: .035, rz: -.27 },
+          { x: 1.04, y: -.75, z: .08, rx: Math.PI / 2, ry: -.028, rz: .31 }
+        ],
+        yin: [
+          { x: -1.04, y: -1.05, z: -.09, rx: -Math.PI / 2, ry: .035, rz: -.25 },
+          { x: 1.04, y: -1.05, z: .08, rx: -Math.PI / 2, ry: -.035, rz: .29 }
+        ],
+        li: [
+          { x: -.79, y: -.54, z: -.10, rx: .015, ry: -.08, rz: -.052 },
+          { x: .83, y: -.54, z: .05, rx: -.015, ry: .08, rz: .060 }
+        ]
+      };
+      return positions[key][index] || positions.sheng[index];
+    }
+
+    function setModelPose(object, pose) {
+      object.group.position.set(pose.x, pose.y, pose.z);
+      object.group.rotation.set(pose.rx, pose.ry, pose.rz);
+      object.shadow.position.set(pose.x, -1.314, pose.z);
+      object.shadow.rotation.set(-Math.PI / 2, 0, pose.rz);
+      object.shadow.scale.set(1.22, .59, 1);
+      object.shadow.material.opacity = .225;
+    }
+
+    function resetThreeScene() {
+      if (!threeReady) return;
+      castAnimation3D = null;
+      const starts = [
+        { x: -.34, y: -.78, z: 1.16, rx: -.14, ry: .13, rz: -.24 },
+        { x: .34, y: -.78, z: 1.22, rx: .14, ry: -.11, rz: .24 }
+      ];
+      jiaobeiObjects3D.forEach((object, index) => {
+        setModelPose(object, starts[index]);
+        object.group.scale.setScalar(.68);
+        object.shadow.material.opacity = .10;
+        object.shadow.scale.set(1.02, .46, 1);
+      });
+    }
+
+    function startThreeCast(key) {
+      if (!threeReady) return;
+      resetThreeScene();
+      castAnimation3D = {
+        key,
+        start: performance.now(),
+        duration: Math.max(2350, APP_CONFIG.castingDurationMs - 120)
+      };
+    }
+
+    function updateThreeCast(now) {
+      if (!castAnimation3D) return;
+      const elapsed = now - castAnimation3D.start;
+      const t = clamp01(elapsed / castAnimation3D.duration);
+      const key = castAnimation3D.key;
+
+      jiaobeiObjects3D.forEach((object, index) => {
+        const delay = index * .032;
+        const localT = clamp01((t - delay) / (1 - delay));
+        const finalPose = getFinalPose(key, index);
+        const startX = index === 0 ? -.34 : .34;
+        const startY = -.78;
+        const startZ = index === 0 ? 1.16 : 1.22;
+        const direction = index === 0 ? -1 : 1;
+
+        let x;
+        let y;
+        let z;
+        let rx;
+        let ry;
+        let rz;
+
+        // A lower arc and fewer full rotations make the wooden blocks feel heavier.
+        if (localT < .72) {
+          const flight = localT / .72;
+          const travel = easeInOutCubic(flight);
+          const apex = Math.pow(Math.sin(Math.PI * flight), .82);
+          x = THREE.MathUtils.lerp(startX, finalPose.x + direction * .19, travel);
+          y = THREE.MathUtils.lerp(startY, finalPose.y + .10, travel) + apex * (2.43 + index * .10);
+          z = THREE.MathUtils.lerp(startZ, finalPose.z - .13, travel) + Math.sin(Math.PI * flight) * direction * .28;
+
+          rx = THREE.MathUtils.lerp(index ? .14 : -.14, finalPose.rx + direction * Math.PI * 4, travel);
+          ry = THREE.MathUtils.lerp(index ? -.11 : .13, finalPose.ry - direction * Math.PI * 2, travel);
+          rz = THREE.MathUtils.lerp(index ? .24 : -.24, finalPose.rz + direction * Math.PI * 2, travel);
+        } else {
+          const settle = (localT - .72) / .28;
+          const eased = easeInOutCubic(settle);
+          const decay = Math.exp(-6.6 * settle);
+          const bounce = Math.abs(Math.sin(settle * Math.PI * 2.55)) * .19 * Math.pow(1 - settle, 2.15);
+          const slide = (1 - eased) * direction * .19;
+
+          x = finalPose.x + slide;
+          y = finalPose.y + bounce;
+          z = finalPose.z - (1 - eased) * .13;
+          rx = finalPose.rx + Math.sin(settle * Math.PI * 2.6) * decay * .17 * direction;
+          ry = finalPose.ry + Math.sin(settle * Math.PI * 2.2) * decay * .11;
+          rz = finalPose.rz + Math.sin(settle * Math.PI * 2.9) * decay * .14 * direction;
+        }
+
+        object.group.position.set(x, y, z);
+        object.group.rotation.set(rx, ry, rz);
+
+        const height = Math.max(0, y - finalPose.y);
+        object.shadow.position.set(x, -1.314, z);
+        object.shadow.rotation.set(-Math.PI / 2, 0, rz);
+        object.shadow.scale.set(1.08 + height * .22, .49 + height * .075, 1);
+        object.shadow.material.opacity = THREE.MathUtils.clamp(.235 - height * .075, .028, .225);
+      });
+
+      if (t >= 1) {
+        jiaobeiObjects3D.forEach((object, index) => setModelPose(object, getFinalPose(key, index)));
+        castAnimation3D = null;
+      }
+    }
+
+    function renderThreeScene(now = performance.now()) {
+      if (!renderer3D || !scene3D || !camera3D) return;
+      updateThreeCast(now);
+      renderer3D.render(scene3D, camera3D);
+      requestAnimationFrame(renderThreeScene);
+    }
+
+    function resetPieceClasses() {
+      resetThreeScene();
     }
 
     function castJiaobei() {
@@ -1242,11 +2068,10 @@
       answerSubmitted = false;
 
       showScreen("casting");
+      resizeThreeScene();
       castingCopy.textContent = "Waiting for the blocks to settle";
       resetPieceClasses();
-      pieces.classList.remove("throwing");
-      void pieces.offsetWidth;
-      pieces.classList.add("throwing");
+      startThreeCast(currentOutcomeKey);
       playThrowSound();
 
       const messages = ["Seeking guidance…", "Fortune is turning…", "The blocks are about to settle…"];
@@ -1258,47 +2083,14 @@
 
       setTimeout(() => {
         clearInterval(messageTimer);
-        pieces.classList.remove("throwing");
-        applyFinalPiecePose(currentOutcomeKey);
         playLandingSound();
-      }, 1900);
+      }, 2060);
 
       setTimeout(() => {
         renderResult(currentOutcomeKey);
         showScreen("result");
         playResultChime(currentOutcomeKey === "sheng");
       }, APP_CONFIG.castingDurationMs);
-    }
-
-    function applyFinalPiecePose(key) {
-      const outcome = OUTCOMES[key];
-      const poses = {
-        sheng: [
-          { face: "flat", rx: "10deg", ry: "-8deg", rz: "18deg" },
-          { face: "convex", rx: "-7deg", ry: "6deg", rz: "158deg" }
-        ],
-        xiao: [
-          { face: "flat", rx: "8deg", ry: "-5deg", rz: "22deg" },
-          { face: "flat", rx: "-5deg", ry: "7deg", rz: "156deg" }
-        ],
-        yin: [
-          { face: "convex", rx: "9deg", ry: "-5deg", rz: "20deg" },
-          { face: "convex", rx: "-5deg", ry: "5deg", rz: "160deg" }
-        ],
-        li: [
-          { face: "convex", rx: "76deg", ry: "4deg", rz: "-8deg" },
-          { face: "convex", rx: "78deg", ry: "-4deg", rz: "10deg" }
-        ]
-      };
-
-      [pieceOne, pieceTwo].forEach((piece, i) => {
-        piece.classList.remove("face-flat", "face-convex");
-        piece.classList.add(`face-${poses[key][i].face}`);
-        piece.style.setProperty("--rx", poses[key][i].rx);
-        piece.style.setProperty("--ry", poses[key][i].ry);
-        piece.style.setProperty("--rz", poses[key][i].rz);
-        piece.style.top = key === "li" ? "115px" : "130px";
-      });
     }
 
     function renderResult(key) {
@@ -1395,7 +2187,7 @@
     function closeRewardAndReset() {
       rewardModal.classList.remove("show");
       document.body.style.overflow = "";
-      pieces.classList.remove("throwing");
+      resetThreeScene();
       currentOutcomeKey = null;
       currentQuestionKey = null;
       selectedAnswer = null;
@@ -1511,6 +2303,18 @@
     function playRewardFanfare() {
       [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => tone(freq, i * .11, .65, "sine", .045));
     }
+
+    async function bootThreeScene() {
+      try {
+        THREE = await import("https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js");
+        initThreeScene();
+      } catch (error) {
+        console.error("Unable to initialize the 3D jiaobei scene:", error);
+        threeLoading.textContent = "3D MODE UNAVAILABLE";
+      }
+    }
+
+    bootThreeScene();
 
     /* ==========================================================
        Events
